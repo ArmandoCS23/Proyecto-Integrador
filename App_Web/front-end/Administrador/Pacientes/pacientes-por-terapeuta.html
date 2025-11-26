@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacientes del Terapeuta</title>
+  <link rel="stylesheet" href="../Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="pacientes.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Canonical Sidebar (from dashboard-admin.html) -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar">
+          <img id="adminPhoto" src="../Dashboard/avatar.png" alt="Administrador">
+        </div>
+        <h3 id="adminName">Administrador</h3>
+        <p id="adminEmail" class="muted">admin@ejemplo.com</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboard-admin.html'">Inicio</li>
+          <li onclick="window.location.href='../terapeuta/terapeutas.html'">Terapeutas</li>
+          <li onclick="window.location.href='pacientes.html'" class="active">Pacientes</li>
+          <li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Dar de alta paciente/alta-paciente.html'">Dar de alta paciente</li>
+          <li onclick="window.location.href='../Dar de alta terapeuta/alta-terapeuta.html'">Dar de alta terapeuta</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="logoutAdmin()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Pacientes del Terapeuta</h1>
+      <div id="therapistInfo" style="margin-bottom:12px;color:#234; font-weight:600;"></div>
+      <div class="search-section">
+        <input type="text" id="searchInput" placeholder="Buscar por nombre, tratamiento..." onkeyup="filterLocal()">
+      </div>
+      <div class="patients-container" id="patientsContainer"></div>
+    </main>
+  </div>
+
+  <script src="../Dashboard/admin-manager.js"></script>
+  <script src="pacientes-por-terapeuta.js"></script>
+</body>
+</html>

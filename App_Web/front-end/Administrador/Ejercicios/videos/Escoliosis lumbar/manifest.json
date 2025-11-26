@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ambas-rodillas-al-pecho",
+    "name": "Ambas rodillas al pecho",
+    "path": "videos/Escoliosis lumbar/Ambas rodillas al pecho.mp4",
+    "notes": "Ambas rodillas al pecho"
+  },
+  {
+    "id": "cubito-supino",
+    "name": "Cubito supino",
+    "path": "videos/Escoliosis lumbar/Cubito supino.mp4",
+    "notes": "Cubito supino"
+  },
+  {
+    "id": "perro-de-caza",
+    "name": "Perro de caza",
+    "path": "videos/Escoliosis lumbar/Perro de caza.mp4",
+    "notes": "Perro de caza"
+  },
+  {
+    "id": "plancha-lateral",
+    "name": "Plancha lateral",
+    "path": "videos/Escoliosis lumbar/Plancha lateral.mp4",
+    "notes": "Plancha lateral"
+  },
+  {
+    "id": "postura-del-avion",
+    "name": "Postura del Avion",
+    "path": "videos/Escoliosis lumbar/Postura del Avion.mp4",
+    "notes": "Postura del Avion"
+  },
+  {
+    "id": "puente",
+    "name": "Puente",
+    "path": "videos/Escoliosis lumbar/Puente.mp4",
+    "notes": "Puente"
+  },
+  {
+    "id": "rodilla-al-pecho",
+    "name": "Rodilla al pecho",
+    "path": "videos/Escoliosis lumbar/Rodilla al pecho.mp4",
+    "notes": "Rodilla al pecho"
+  }
+]

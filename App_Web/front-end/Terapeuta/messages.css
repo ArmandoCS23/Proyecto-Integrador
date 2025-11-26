@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:#f4f6fb}
+.messages-app{display:flex;min-height:100vh}
+.contacts{width:300px;background:linear-gradient(180deg,#0A1B4F,#1a2f6b);color:#fff;padding:18px;}
+.contacts-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.contacts-header .back{color:#fff;text-decoration:none;background:rgba(255,255,255,0.06);padding:6px 8px;border-radius:6px}
+.contacts ul{list-style:none}
+.contacts li{background:rgba(255,255,255,0.06);padding:10px;margin-bottom:8px;border-radius:8px;cursor:pointer}
+.contacts li.active{background:linear-gradient(135deg,#32497F 0%, #4a6fa5 100%)}
+.chat{flex:1;display:flex;flex-direction:column}
+.chat-header{padding:18px;background:#fff;border-bottom:1px solid #eee}
+.chat-body{flex:1;padding:18px;overflow-y:auto;background:linear-gradient(180deg,#fbfdff,#f0f6ff)}
+.chat-body .msg{background:#fff;padding:10px;border-radius:8px;margin-bottom:10px;display:inline-block;max-width:70%}
+.chat-body .msg.me{background:linear-gradient(135deg,#0A1B4F,#32497F);color:#fff;margin-left:auto}
+.chat-form{display:flex;padding:12px;background:#fff;border-top:1px solid #eee}
+.chat-form input{flex:1;padding:10px;border-radius:8px;border:1px solid #ddd;margin-right:8px}
+.chat-form button{padding:10px 14px;border-radius:8px;border:none;background:linear-gradient(135deg,#0A1B4F,#32497F);color:#fff}
+
+@media(max-width:800px){.contacts{display:none}.messages-app{flex-direction:column}.chat-header{position:sticky;top:0}}

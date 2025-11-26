@@ -1,0 +1,38 @@
+[
+  {
+    "id": "abdominales",
+    "name": "Abdominales",
+    "path": "videos/Espondilólisis/Abdominales.mp4",
+    "notes": "Abdominales"
+  },
+  {
+    "id": "ambas-rodillas-al-pecho",
+    "name": "Ambas rodillas al pecho",
+    "path": "videos/Espondilólisis/Ambas rodillas al pecho.mp4",
+    "notes": "Ambas rodillas al pecho"
+  },
+  {
+    "id": "perro-de-caza",
+    "name": "Perro de caza",
+    "path": "videos/Espondilólisis/Perro de caza.mp4",
+    "notes": "Perro de caza"
+  },
+  {
+    "id": "plancha-sobre-codos",
+    "name": "Plancha sobre codos",
+    "path": "videos/Espondilólisis/Plancha sobre codos.mp4",
+    "notes": "Plancha sobre codos"
+  },
+  {
+    "id": "puente",
+    "name": "Puente",
+    "path": "videos/Espondilólisis/Puente.mp4",
+    "notes": "Puente"
+  },
+  {
+    "id": "rodilla-al-pecho",
+    "name": "Rodilla al pecho",
+    "path": "videos/Espondilólisis/Rodilla al pecho.mp4",
+    "notes": "Rodilla al pecho"
+  }
+]

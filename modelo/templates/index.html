@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clasificador de Posturas</title>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      @keyframes glow {
+        0%, 100% { box-shadow: 0 0 10px rgba(0,0,0,0.15); }
+        50% { box-shadow: 0 0 25px rgba(0,0,0,0.25); }
+      }
+      .animate-glow {
+        animation: glow 1.8s ease-in-out infinite;
+      }
+
+      @keyframes slide-in-up {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-slide-in-up {
+        animation: slide-in-up 0.6s ease-out forwards;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+
+  <!-- Título -->
+  <div class="bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 py-6">
+      <h1 class="text-4xl font-extrabold text-gray-900">
+        🧍 Entrenador de Posturas en Tiempo Real
+      </h1>
+      <p class="text-gray-600 mt-2">Selecciona una enfermedad y un video de referencia para entrenar</p>
+    </div>
+  </div>
+
+  <!-- Contenedor principal con pestañas -->
+  <div class="max-w-7xl mx-auto w-full px-6 py-8 flex-grow">
+    
+    <!-- Pestañas -->
+    <div class="flex gap-2 mb-6 border-b border-gray-300">
+      <button id="tabSeleccionar" class="px-6 py-3 font-semibold border-b-4 border-blue-500 text-blue-600 cursor-pointer">
+        Seleccionar Referencia
+      </button>
+      <button id="tabCamara" class="px-6 py-3 font-semibold border-b-4 border-transparent text-gray-600 cursor-pointer hover:text-gray-900">
+        Cámara en Vivo
+      </button>
+    </div>
+
+    <!-- Pestaña 1: Seleccionar -->
+    <div id="panelSeleccionar" class="grid grid-cols-1 md:grid-cols-2 gap-8 animate-slide-in-up">
+      
+      <!-- Selector de Dataset -->
+      <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Paso 1: Selecciona una Enfermedad</h2>
+        <select id="datasetSelect" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+          <option value="">-- Cargando enfermedades --</option>
+        </select>
+      </div>
+
+      <!-- Selector de Imagen -->
+      <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-green-500">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Paso 2: Selecciona un Video</h2>
+        <select id="imageSelect" disabled class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 disabled:bg-gray-100">
+          <option value="">-- Selecciona una enfermedad primero --</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Vista previa del video seleccionado -->
+    <div id="previewSection" class="hidden mt-8 bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Previsualización del Video de Referencia</h2>
+      <div class="flex flex-col items-center">
+        <video id="previewImage" width="400" height="300" controls class="rounded-lg shadow-md mb-4" style="background-color: #000;"></video>
+        <button id="btnIniciarCamara" class="px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors">
+          Iniciar Comparación en Cámara
+        </button>
+      </div>
+    </div>
+
+    <!-- Pestaña 2: Cámara en Vivo -->
+    <div id="panelCamara" class="hidden grid grid-cols-1 md:grid-cols-2 gap-8 animate-slide-in-up">
+      
+      <!-- Video de Referencia -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-l-4 border-green-500">
+        <div class="bg-gray-100 p-4">
+          <h3 class="font-bold text-gray-900">Video de Referencia</h3>
+        </div>
+        <div class="p-4 flex items-center justify-center min-h-96 bg-gray-50">
+          <video id="refImage" width="400" height="300" controls class="max-w-full max-h-96 rounded-lg" style="background-color: #000;"></video>
+        </div>
+      </div>
+
+      <!-- Video en Vivo -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-l-4 border-blue-500">
+        <div class="bg-gray-100 p-4">
+          <h3 class="font-bold text-gray-900">Tu Postura en Vivo</h3>
+        </div>
+        <div class="p-4 flex flex-col items-center bg-gray-50">
+          <img id="videoFeed" width="400" height="300" class="rounded-lg shadow-md mb-4" />
+          
+          <!-- Información de Feedback -->
+          <div id="postureDisplay" class="w-full px-4 py-4 text-lg font-semibold rounded-lg shadow-lg bg-gray-200 text-gray-800 text-center">
+            Esperando detección...
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Script -->
+  <script>
+    const socket = io();
+
+    // DOM Elements
+    const datasetSelect = document.getElementById('datasetSelect');
+    const imageSelect = document.getElementById('imageSelect');
+    const previewImage = document.getElementById('previewImage');
+    const previewSection = document.getElementById('previewSection');
+    const btnIniciarCamara = document.getElementById('btnIniciarCamara');
+    const videoFeed = document.getElementById('videoFeed');
+    const refImage = document.getElementById('refImage');
+    const postureDisplay = document.getElementById('postureDisplay');
+    const tabSeleccionar = document.getElementById('tabSeleccionar');
+    const tabCamara = document.getElementById('tabCamara');
+    const panelSeleccionar = document.getElementById('panelSeleccionar');
+    const panelCamara = document.getElementById('panelCamara');
+
+    let selectedImagePath = null;
+
+    // Colores según condición
+    const styles = {
+      'lumbalgia mecánica inespecífica': 'bg-green-500 text-white animate-bounce',
+      'hernia de disco lumbar': 'bg-yellow-400 text-black animate-pulse',
+      'espondilolisis': 'bg-red-600 text-white animate-pulse',
+      'escoliosis lumbar': 'bg-blue-500 text-white animate-bounce'
+    };
+
+    // --- Gestión de Pestañas ---
+    tabSeleccionar.addEventListener('click', () => {
+      tabSeleccionar.classList.add('border-blue-500', 'text-blue-600');
+      tabSeleccionar.classList.remove('border-transparent', 'text-gray-600');
+      tabCamara.classList.remove('border-blue-500', 'text-blue-600');
+      tabCamara.classList.add('border-transparent', 'text-gray-600');
+      panelSeleccionar.classList.remove('hidden');
+      panelCamara.classList.add('hidden');
+    });
+
+    tabCamara.addEventListener('click', () => {
+      tabCamara.classList.add('border-blue-500', 'text-blue-600');
+      tabCamara.classList.remove('border-transparent', 'text-gray-600');
+      tabSeleccionar.classList.remove('border-blue-500', 'text-blue-600');
+      tabSeleccionar.classList.add('border-transparent', 'text-gray-600');
+      panelSeleccionar.classList.add('hidden');
+      panelCamara.classList.remove('hidden');
+    });
+
+    // --- Cargar Datasets al Inicio ---
+    async function loadDatasets() {
+      try {
+        const response = await fetch('/api/datasets');
+        const datasets = await response.json();
+        
+        datasetSelect.innerHTML = '<option value="">-- Selecciona una enfermedad --</option>';
+        datasets.forEach(dataset => {
+          const option = document.createElement('option');
+          option.value = dataset;
+          option.textContent = dataset;
+          datasetSelect.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Error cargando datasets:', error);
+      }
+    }
+
+    // --- Cargar Imágenes cuando se selecciona Dataset ---
+    datasetSelect.addEventListener('change', async (e) => {
+      const dataset = e.target.value;
+      imageSelect.innerHTML = '<option value="">-- Selecciona una imagen --</option>';
+      previewSection.classList.add('hidden');
+      
+      if (!dataset) {
+        imageSelect.disabled = true;
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/images/${dataset}`);
+        const images = await response.json();
+        
+        imageSelect.disabled = false;
+        images.forEach(image => {
+          const option = document.createElement('option');
+          option.value = image;
+          option.textContent = image;
+          imageSelect.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Error cargando imágenes:', error);
+      }
+    });
+
+    // --- Mostrar Previsualización al Seleccionar Video ---
+    imageSelect.addEventListener('change', (e) => {
+      const video = e.target.value;
+      const dataset = datasetSelect.value;
+
+      if (!video || !dataset) {
+        previewSection.classList.add('hidden');
+        return;
+      }
+
+      selectedImagePath = `/api/video/${dataset}/${video}`;
+      previewImage.src = selectedImagePath;
+      previewImage.addEventListener('loadedmetadata', () => {
+        previewSection.classList.remove('hidden');
+      }, { once: true });
+    });
+
+    // --- Iniciar Cámara y Establecer Video de Referencia ---
+    btnIniciarCamara.addEventListener('click', () => {
+      if (!selectedImagePath) return;
+
+      // Construir ruta al archivo físico para el servidor
+      const dataset = datasetSelect.value;
+      const video = imageSelect.value;
+      const physicalPath = `dataset/${dataset}/${video}`;
+
+      // Enviar ruta de video al servidor
+      socket.emit('set_reference_video', { video_path: physicalPath });
+
+      // Mostrar el video de referencia en la pestaña de cámara
+      refImage.src = selectedImagePath;
+      // Intentar reproducir automáticamente el video de referencia
+      refImage.currentTime = 0;
+      refImage.muted = true;
+      refImage.play().catch(() => {});
+
+      // Iniciar sincronización de tiempo con el servidor (cada 250ms)
+      if (window._refSyncInterval) {
+        clearInterval(window._refSyncInterval);
+      }
+      window._refSyncInterval = setInterval(() => {
+        try {
+          const t = refImage.currentTime || 0;
+          socket.emit('sync_reference_time', { current_time: t });
+        } catch (e) {
+          // ignore
+        }
+      }, 250);
+
+      // Cambiar a pestaña de cámara
+      setTimeout(() => {
+        tabCamara.click();
+      }, 500);
+    });
+
+    // --- Recibir Video Feed ---
+    socket.on('video_feed', (data) => {
+      videoFeed.src = data.image;
+      postureDisplay.className = 'w-full px-4 py-4 text-lg font-semibold rounded-lg shadow-lg transition-all duration-500 ease-in-out animate-glow';
+
+      const conditionText = data.condition || 'No asignada';
+      const feedback = data.feedback || 'Sin evaluación';
+      const reason = data.reason || '';
+
+      // Ajustar estilo según feedback
+      let feedbackStyle = 'bg-gray-300 text-gray-800';
+      if (feedback === 'Bien') feedbackStyle = 'bg-green-500 text-white';
+      if (feedback === 'Mal') feedbackStyle = 'bg-red-600 text-white';
+
+      postureDisplay.innerHTML = `
+        <div><strong>Condición:</strong> ${conditionText}</div>
+        <div class="mt-2"><strong>Feedback:</strong> ${feedback}</div>
+        <div class="text-sm mt-2">${reason}</div>
+      `;
+
+      postureDisplay.className += ' ' + feedbackStyle;
+    });
+
+    socket.on('disconnect', () => {
+      postureDisplay.textContent = 'Conexión perdida';
+      postureDisplay.className = 'w-full px-4 py-4 text-lg font-semibold rounded-lg shadow-lg bg-gray-500 text-white transition-all duration-500 ease-in-out';
+    });
+
+    socket.on('reference_video_set', (data) => {
+      if (data.success) {
+        console.log('Video de referencia configurado:', data.message);
+      } else {
+        console.warn('Error al configurar video:', data.message);
+      }
+    });
+
+    // Parar sincronización cuando el video se pausa o termina
+    refImage.addEventListener('pause', () => {
+      if (window._refSyncInterval) {
+        clearInterval(window._refSyncInterval);
+        window._refSyncInterval = null;
+      }
+    });
+    refImage.addEventListener('ended', () => {
+      if (window._refSyncInterval) {
+        clearInterval(window._refSyncInterval);
+        window._refSyncInterval = null;
+      }
+    });
+
+    // Cargar datasets al iniciar
+    loadDatasets();
+  </script>
+
+</body>
+</html>

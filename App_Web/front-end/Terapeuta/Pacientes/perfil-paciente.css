@@ -1,0 +1,607 @@
+/* Profile Header */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(10, 27, 79, 0.04);
+  border: 1px solid rgba(10, 27, 79, 0.08);
+  margin-bottom: 24px;
+}
+
+/* Small aesthetic tweaks for the back and message buttons (only styling) */
+#backBtn {
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(10,27,79,0.08);
+  color: #0A1B4F;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#backBtn:hover {
+  background: rgba(9,25,61,0.03);
+  transform: translateY(-1px);
+}
+
+#msgPatientBtn {
+  padding: 6px 10px;
+  font-size: 0.92rem;
+  height: 36px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 0 6px 16px rgba(50,73,127,0.08);
+}
+
+#msgPatientBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* container for back + message buttons */
+.profile-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Confirmation/Alert Modal */
+.confirm-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 40, 0.55);
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.confirm-modal.show {
+  display: flex;
+}
+
+.confirm-modal-content {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(10, 20, 40, 0.2);
+  animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.confirm-modal-header {
+  background: linear-gradient(135deg, #0A1B4F 0%, #32497F 100%);
+  color: white;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.confirm-modal-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.confirm-modal-body {
+  padding: 20px 24px;
+}
+
+.confirm-modal-body p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.confirm-modal-actions {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(10, 27, 79, 0.06);
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid rgba(10, 27, 79, 0.1);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-details h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  color: #0A1B4F;
+  font-weight: 800;
+}
+
+.profile-meta {
+  font-size: 0.95rem;
+  color: #64748b;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Profile Content */
+.profile-content {
+  max-width: 1200px;
+}
+
+/* Exercises Section */
+.exercises-assigned {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(10, 27, 79, 0.04);
+  border: 1px solid rgba(10, 27, 79, 0.08);
+}
+
+.exercises-assigned h3 {
+  font-size: 1.25rem;
+  color: #0A1B4F;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+}
+
+.exercises-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+.exercise-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  border: 1px solid rgba(10, 27, 79, 0.06);
+  border-radius: 14px;
+  padding: 18px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.exercise-card:hover {
+  border-color: #32497F;
+  box-shadow: 0 8px 24px rgba(10, 27, 79, 0.08);
+  transform: translateY(-2px);
+}
+
+.exercise-card-header {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.exercise-card-icon {
+  font-size: 2rem;
+  flex: 0 0 auto;
+}
+
+.exercise-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0A1B4F;
+  margin: 0;
+}
+
+.exercise-card-pathology {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+  margin: 4px 0 0 0;
+}
+
+.exercise-card-body {
+  background: linear-gradient(180deg, #fbfdff 0%, #ffffff 100%);
+  border-radius: 10px;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+/* Video preview styling inside exercise card */
+.exercise-video-preview {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #eef6ff 0%, #f3fbff 100%);
+  border: 1px solid rgba(50,73,127,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.exercise-video-preview video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.exercise-video-preview .video-placeholder {
+  padding: 28px 12px;
+  color: #64748b;
+  font-weight: 700;
+}
+
+
+.exercise-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin: 8px 0;
+}
+
+.exercise-detail-label {
+  color: #0A1B4F;
+  font-weight: 700;
+}
+
+.exercise-detail-value {
+  color: #475569;
+  text-align: right;
+}
+
+.exercise-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-adjust-ex {
+  flex: 1;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #32497F 0%, #4a6fa5 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.btn-adjust-ex:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(50, 73, 127, 0.2);
+}
+
+.btn-remove-ex {
+  flex: 1;
+  padding: 8px 12px;
+  background: #f1f5f9;
+  color: #dc2626;
+  border: 2px solid #fecaca;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.btn-remove-ex:hover {
+  background: #fee2e2;
+  border-color: #dc2626;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #64748b;
+  background: linear-gradient(135deg, #f8fafc 0%, #f3fbff 100%);
+  border-radius: 12px;
+  border: 1px dashed rgba(100, 116, 139, 0.2);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.empty-state-text {
+  font-size: 0.95rem;
+}
+
+/* Modal */
+.adjust-exercise-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 40, 0.5);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.adjust-exercise-modal.show {
+  display: flex;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(10, 20, 40, 0.3);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #0A1B4F 0%, #32497F 100%);
+  color: white;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #0A1B4F;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 12px;
+  border: 1px solid rgba(10, 27, 79, 0.12);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #32497F;
+  box-shadow: 0 0 0 3px rgba(50, 73, 127, 0.1);
+}
+
+.form-group input:disabled {
+  background: #f1f5f9;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #32497F 0%, #4a6fa5 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(50, 73, 127, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(50, 73, 127, 0.3);
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #0A1B4F;
+  border: 2px solid rgba(10, 27, 79, 0.12);
+}
+
+.btn-secondary:hover {
+  background: #e8ecf1;
+  border-color: rgba(10, 27, 79, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exercises-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    max-width: 90%;
+  }
+}
+
+/* Confirmation Modal Styles */
+.confirm-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 40, 0.5);
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.confirm-modal.show {
+  display: flex;
+}
+
+.confirm-modal-content {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(10, 20, 40, 0.3);
+  animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.confirm-modal-header {
+  background: linear-gradient(135deg, #0A1B4F 0%, #32497F 100%);
+  color: white;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.confirm-modal-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.confirm-close-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.confirm-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(90deg);
+}
+
+.confirm-modal-body {
+  padding: 24px;
+  color: #0A1B4F;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.confirm-modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(10, 27, 79, 0.08);
+  background: #fafbfd;
+}
+
+.confirm-modal-footer .btn {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(220, 38, 38, 0.3);
+}

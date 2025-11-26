@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mensajes - Terapeuta</title>
+  <link rel="stylesheet" href="messages.css">
+  <link rel="stylesheet" href="Historial/Historial.css">
+</head>
+<body>
+  <div class="messages-app">
+    <aside class="contacts">
+      <div class="contacts-header">
+        <h2>Pacientes</h2>
+        <a href="./Dashboard/dashboardt.html" class="back">Volver</a>
+      </div>
+      <ul id="contactsList">
+        <!-- pacientes cargados por JS -->
+      </ul>
+    </aside>
+
+    <main class="chat">
+      <div class="chat-header">
+        <h3 id="chatTitle">Selecciona un paciente</h3>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="empty">No hay conversación seleccionada</div>
+      </div>
+      <form id="chatForm" class="chat-form" style="display:none;">
+        <input id="chatInput" placeholder="Escribe un mensaje..." autocomplete="off">
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="../shared/therapist-manager.js"></script>
+  <script src="messages.js"></script>
+  <script src="Historial/Historial.js"></script>
+</body>
+</html>

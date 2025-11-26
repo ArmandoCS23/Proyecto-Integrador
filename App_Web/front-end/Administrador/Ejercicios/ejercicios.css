@@ -1,0 +1,72 @@
+/* Styles for Ejercicios page - improved card layout and visual polish */
+.cards {
+	display: grid;
+	/* Force two columns so layout shows 2 cards per row on desktop */
+	grid-template-columns: repeat(2, 1fr);
+	gap: 28px;
+	max-width: 1100px;
+	margin: 20px auto 0 auto; /* center inside main */
+	align-items: stretch;
+}
+
+.card {
+	cursor: pointer;
+	padding: 20px 18px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background: linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%);
+	border-radius: 14px;
+	border: 1px solid rgba(10,27,79,0.06);
+	box-shadow: 0 8px 22px rgba(6,18,52,0.06);
+	transition: transform 200ms ease, box-shadow 200ms ease, box-shadow 220ms ease;
+	min-height: 140px;
+	justify-content: space-between;
+}
+
+.card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 20px 50px rgba(6,18,52,0.12);
+}
+
+.card .icon {
+	font-size: 2.4rem;
+	margin-bottom: 12px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 12px;
+	background: linear-gradient(135deg, rgba(43,124,255,0.12), rgba(30,95,227,0.06));
+	color: #1e5fe3;
+}
+
+.card .title {
+	font-size: 1.06rem;
+	font-weight: 700;
+	color: #0A1B4F;
+	margin-bottom: 6px;
+}
+
+.card .count {
+	color: #32497F;
+	font-size: 0.95rem;
+	margin-top: 12px;
+	align-self: flex-end;
+	background: rgba(43,124,255,0.06);
+	padding: 6px 10px;
+	border-radius: 999px;
+	font-weight: 600;
+}
+
+/* Make sure cards stack nicely on smaller screens */
+/* Keep two columns for medium screens, collapse to 1 on small/mobile */
+@media (max-width:900px){
+	.cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width:720px){
+	.cards { grid-template-columns: 1fr; }
+	.card { min-height: 110px; }
+}

@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "PhysioNext",
+    "slug": "physionext",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icono_app.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/icono_app.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#f0f3ff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icono_app.png",
+        "backgroundColor": "#f0f3ff"
+      },
+      "package": "com.physionext.app"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a9e149a6-67f9-42b3-8b6d-b7c6d4d1c088"
+      }
+    }
+  }
+}

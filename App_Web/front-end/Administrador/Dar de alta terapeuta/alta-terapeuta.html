@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dar de Alta Terapeuta</title>
+  <link rel="stylesheet" href="../Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="alta-terapeuta.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Canonical Sidebar (from dashboard-admin.html) -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar">
+          <img id="adminPhoto" src="../Dashboard/avatar.png" alt="Administrador">
+        </div>
+        <h3 id="adminName">Administrador</h3>
+        <p id="adminEmail" class="muted">admin@ejemplo.com</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboard-admin.html'">Inicio</li>
+          <li onclick="window.location.href='../terapeuta/terapeutas.html'">Terapeutas</li>
+          <li onclick="window.location.href='../Pacientes/pacientes.html'">Pacientes</li>
+          <li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Dar de alta paciente/alta-paciente.html'">Dar de alta paciente</li>
+          <li onclick="window.location.href='alta-terapeuta.html'" class="active">Dar de alta terapeuta</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="logoutAdmin()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Registrar Nuevo Terapeuta</h1>
+      
+      <div class="form-section">
+        <div class="form-container">
+          <div class="form-card">
+            <div class="form-header">
+              <div class="form-info">
+                <h3>📋 Registro Básico</h3>
+                <div class="form-subtitle">Registra la información esencial del terapeuta</div>
+              </div>
+            </div>
+            <div class="form-content">
+              <form id="therapistForm" class="therapist-form" autocomplete="off">
+                <div class="form-section">
+                  <h2>Información Esencial</h2>
+                  
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="nombre">Nombre completo *</label>
+                      <input type="text" id="nombre" name="nombre" required placeholder="Ej: Dr. Juan Pérez García" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="foto">Foto de perfil</label>
+                      <input type="file" id="foto" name="foto" accept="image/*">
+                      <small class="form-help">Sube una foto para mostrar en el perfil del terapeuta</small>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="especialidad">Especialidad *</label>
+                      <select id="especialidad" name="especialidad" required autocomplete="off">
+                        <option value="">Seleccionar especialidad</option>
+                        <option value="Fisioterapia general">Fisioterapia General</option>
+                        <option value="Fisioterapia deportiva">Fisioterapia Deportiva</option>
+                        <option value="Rehabilitación neurológica">Rehabilitación Neurológica</option>
+                        <option value="Terapia manual">Terapia Manual</option>
+                        <option value="Rehabilitación postquirúrgica">Rehabilitación Postquirúrgica</option>
+                        <option value="Fisioterapia respiratoria">Fisioterapia Respiratoria</option>
+                        <option value="Fisioterapia pediátrica">Fisioterapia Pediátrica</option>
+                        <option value="Fisioterapia geriátrica">Fisioterapia Geriátrica</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email">Correo electrónico *</label>
+                      <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com" autocomplete="new-email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Ingresa un correo válido">
+                      <small class="form-help">Este será su usuario para iniciar sesión</small>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="password">Contraseña temporal *</label>
+                      <input type="password" id="password" name="password" required minlength="6" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
+                      <small class="form-help">El terapeuta podrá cambiarla en su primer inicio de sesión</small>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="telefono">Teléfono de contacto *</label>
+                      <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 555-123-4567" autocomplete="off" pattern="[0-9\s\-\(\)]{10,}" title="Solo números, mínimo 10 dígitos">
+                    </div>
+                  </div>
+
+                  <div class="form-group checkbox-group">
+                    <input type="checkbox" id="activo" name="activo" checked>
+                    <label for="activo">Terapeuta activo (puede recibir pacientes inmediatamente)</label>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn-secondary" onclick="limpiarFormulario()">Limpiar Formulario</button>
+                  <button type="submit" class="btn btn-primary">Registrar Terapeuta</button>
+                </div>
+              </form>
+
+        <!-- Toast container (flotante) -->
+        <div id="toastContainer" aria-live="polite" aria-atomic="true">
+          <!-- toasts will be injected here -->
+        </div>
+          <!-- Confirmation modal -->
+          <div id="confirmModal" class="modal-overlay" aria-hidden="true">
+            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+              <button class="modal-close" aria-label="Cerrar">×</button>
+              <h2 id="confirmTitle">¿Seguro que quieres registrar a este terapeuta?</h2>
+              <p class="muted">Verifica que los datos ingresados son correctos antes de continuar.</p>
+              <div class="modal-actions">
+                <button id="cancelConfirm" class="btn btn-secondary">Cancelar</button>
+                <button id="confirmSave" class="btn btn-primary">Sí, registrar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success overlay (hidden until save) -->
+          <div id="successOverlay" class="success-overlay" aria-hidden="true">
+            <div class="success-card">
+              <div class="check">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <circle cx="12" cy="12" r="12" fill="url(#g)" />
+                  <path d="M6.5 12.5l3 3 7-7" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <defs>
+                    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#2b7cff"/>
+                      <stop offset="100%" stop-color="#1e5fe3"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <h2>¡Registrado con éxito!</h2>
+              <p>El terapeuta se creó correctamente.</p>
+              <div id="createdCredentials" style="display:none; margin-top:12px; text-align:left; background:#f6f8ff; padding:10px; border-radius:6px;">
+                <strong>Credenciales temporales:</strong>
+                <div style="margin-top:6px;">Usuario: <span id="credEmail"></span></div>
+                <div>Contraseña: <span id="credPassword"></span> <button id="copyCred" class="btn btn-secondary" style="margin-left:8px;">Copiar</button></div>
+                <small class="muted">Muestra la contraseña generada (sólo visible una vez).</small>
+              </div>
+              <div class="success-actions">
+                <button id="goToTherapists" class="btn btn-primary">Ver terapeutas</button>
+              </div>
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../shared/local-store.js"></script>
+  <script src="../Dashboard/admin-manager.js"></script>
+  <script src="alta-terapeuta.js"></script>
+</body>
+</html>

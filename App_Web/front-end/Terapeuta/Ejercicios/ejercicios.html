@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios - Terapeuta</title>
+  <link rel="stylesheet" href="../../Administrador/Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="ejercicios.css">
+  <link rel="stylesheet" href="../Historial/Historial.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar"><img id="therapistPhoto" src="../Dashboard/../Administrador/Dashboard/avatar.png" alt="Terapeuta"></div>
+        <h3 id="therapistName">Terapeuta</h3>
+        <p id="therapistEmail" class="muted">correo@ejemplo.com</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboardt.html'">Inicio</li>
+          <li onclick="window.location.href='../Pacientes/pacientes.html'">Pacientes</li>
+          <li class="active" onclick="window.location.href='ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Reportes/Reportes.html'">Reportes</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="window.location.href='../messages.html'">Mensajes</li>
+          <li onclick="logoutTherapist()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="exercises-header">
+        <div class="header-content">
+          <div class="header-title-section">
+            <h1>Centro de Ejercicios</h1>
+            <p class="muted">Asigna y configura rutinas personalizadas para tus pacientes</p>
+          </div>
+          <!-- header stats removed as requested -->
+        </div>
+      </header>
+
+      <div class="exercises-layout">
+        <!-- Left: Patients -->
+        <section class="patients-section">
+          <div class="section-header">
+            <h2>👥 Mis Pacientes</h2>
+          </div>
+          <div class="patients-list" id="patientsList">
+            <!-- Rendered dynamically -->
+          </div>
+        </section>
+
+        <!-- Right: Available exercises for selected patient -->
+        <section class="assignments-section">
+          <div class="section-header-main">
+            <div class="patient-info">
+              <h2 id="selectedPatientTitle">Selecciona un paciente</h2>
+              <p class="subtitle" id="selectedPatientSubtitle">Elige un paciente para ver ejercicios disponibles</p>
+              <div class="patient-details" id="patientDetails" style="display: none;">
+                <span class="detail-badge" id="patientAge"></span>
+                <span class="detail-badge" id="patientDiagnosis"></span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="exercises-available" id="exercisesAvailable">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <!-- Assignment Modal -->
+          <div class="assign-modal" id="assignModal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div>
+                  <h3>🎬 Asignar Ejercicio</h3>
+                  <p class="modal-subtitle">Configure los parámetros de ejecución</p>
+                </div>
+                <button class="close-btn" onclick="closeAssignModal()">✕</button>
+              </div>
+              <div class="modal-body">
+                <form id="assignForm">
+                  <div class="form-section">
+                    <div class="form-group">
+                      <label>Ejercicio</label>
+                      <div class="exercise-display" id="assignExerciseName">-</div>
+                      <div class="exercise-preview-container" id="assignExerciseVideo">
+                        <!-- Video preview loaded here -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-section">
+                    <h4 class="section-title">Parámetros de ejecución</h4>
+                    <div class="form-group">
+                      <label>Repeticiones <span class="required">*</span></label>
+                      <input type="text" id="assignReps" placeholder="Ej. 10, 15 x 3 series, 30 segundos" required>
+                    </div>
+                  </div>
+
+                  <div class="form-section">
+                    <h4 class="section-title">Días de práctica</h4>
+                    <div class="days-selector" id="daysSelectorContainer">
+                      <label class="day-label"><input type="checkbox" name="day" value="Lunes"> <span>L</span> Lunes</label>
+                      <label class="day-label"><input type="checkbox" name="day" value="Martes"> <span>M</span> Martes</label>
+                      <label class="day-label"><input type="checkbox" name="day" value="Miércoles"> <span>X</span> Miércoles</label>
+                      <label class="day-label"><input type="checkbox" name="day" value="Jueves"> <span>J</span> Jueves</label>
+                      <label class="day-label"><input type="checkbox" name="day" value="Viernes"> <span>V</span> Viernes</label>
+                      <label class="day-label"><input type="checkbox" name="day" value="Sábado"> <span>S</span> Sábado</label>
+                      <label class="day-label"><input type="checkbox" name="day" value="Domingo"> <span>D</span> Domingo</label>
+                    </div>
+                    <p class="form-hint">Selecciona los días en que el paciente debe realizar el ejercicio</p>
+                  </div>
+
+                  <div class="form-section">
+                    <div class="form-group">
+                      <label>Observaciones (opcional)</label>
+                      <textarea id="assignNotes" placeholder="Ej. Evitar movimientos bruscos, realizar con cuidado, progresivamente..." rows="3"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">✓ Asignar Ejercicio</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeAssignModal()">Cancelar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="../shared/therapist-manager.js"></script>
+  <script src="video-manifest.js"></script>
+  <script src="ejercicios.js"></script>
+  <script src="../Historial/Historial.js"></script>
+</body>
+</html>

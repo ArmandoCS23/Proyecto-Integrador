@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* Use canonical dashboard-admin.css for the sidebar; keep layout margin aligned. */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  margin-left: 260px; /* match dashboard-admin.css */
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background-color: #b0c3f283;
+  overflow-y: auto;
+}
+
+.main-content h1 {
+  margin-bottom: 30px;
+  color: #0A1B4F;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* Search Section */
+.search-section {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#searchInput {
+  width: 60%;
+  max-width: 500px;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+}
+
+#searchInput:focus {
+  border-color: #0A1B4F;
+  box-shadow: 0 0 0 3px rgba(10, 27, 79, 0.1);
+}
+
+/* (Removed therapist select styles since the select was removed from the markup) */
+
+/* Mensaje de resultados de búsqueda */
+.search-results-message {
+  grid-column: 1 / -1;
+  background: #f8f9ff;
+  border: 1px solid #e0e6ff;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Contenedor de pacientes mejorado */
+.patients-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* Tarjeta de paciente rediseñada */
+.patient-card {
+  background: white;
+  border-radius: 15px;
+  padding: 0;
+  box-shadow: 0 8px 20px rgba(10, 27, 79, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid rgba(10, 27, 79, 0.05);
+}
+
+.patient-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(10, 27, 79, 0.15);
+  border-color: rgba(10, 27, 79, 0.1);
+}
+
+/* Header de la tarjeta */
+.patient-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #0A1B4F 0%, #32497F 100%);
+  padding: 20px;
+  color: white;
+  position: relative;
+}
+
+.patient-header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(135deg, #0A1B4F 0%, #32497F 100%);
+  clip-path: ellipse(100% 100% at 50% 0%);
+}
+
+.patient-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+  background: white;
+}
+
+.patient-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.patient-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.patient-specialty {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.patient-email {
+  font-size: 0.9rem;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.3px;
+}
+
+/* Detalles del paciente */
+.patient-details {
+  padding: 25px 20px 20px;
+}
+
+.patient-details p {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #555;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.patient-details strong {
+  color: #0A1B4F;
+  font-weight: 600;
+  min-width: 120px;
+}
+
+/* Estados del paciente */
+.patient-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-active {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+}
+
+.status-inactive {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.status-followup {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+/* Acciones de la tarjeta */
+.patient-actions {
+  padding: 0 20px 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0A1B4F 0%, #32497F 100%);
+  color: white;
+  box-shadow: 0 4px 10px rgba(10, 27, 79, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(10, 27, 79, 0.4);
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #0A1B4F;
+  border: 2px solid #e9ecef;
+}
+
+.btn-secondary:hover {
+  background: #e9ecef;
+  border-color: #dee2e6;
+  transform: translateY(-1px);
+}
+
+/* Mensaje cuando no hay resultados */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+  font-size: 1.1rem;
+  grid-column: 1 / -1;
+}
+
+.no-results::before {
+  content: "👥";
+  display: block;
+  font-size: 3rem;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    margin-left: 0;
+  }
+  
+  .sidebar {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .main-content h1 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  
+  #searchInput {
+    width: 85%;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+  
+  .patients-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .patient-card {
+    margin: 0;
+  }
+  
+  .patient-header {
+    padding: 15px;
+  }
+  
+  .patient-details {
+    padding: 20px 15px 15px;
+  }
+  
+  .patient-actions {
+    padding: 0 15px 15px;
+    flex-direction: column;
+  }
+  
+  .btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 15px;
+  }
+  
+  .patient-header h3 {
+    font-size: 1.2rem;
+  }
+  
+  .patient-details p {
+    font-size: 0.9rem;
+  }
+  
+  .patient-details strong {
+    min-width: 100px;
+  }
+  
+  #searchInput {
+    width: 90%;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+}

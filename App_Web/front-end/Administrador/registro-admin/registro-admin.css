@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0A1B4F 0%, #32497F 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.registro-container {
+  width: 100%;
+  max-width: 360px; /* más compacto */
+  position: relative;
+  margin: 0 auto;
+}
+
+.registro-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.registro-header {
+  background: linear-gradient(135deg, #0A1B4F 0%, #32497F 100%);
+  color: white;
+  padding: 14px 12px 12px;
+  text-align: center;
+  position: relative;
+}
+
+.registro-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: rotate(0deg) translate(-20px, -20px); }
+  50% { transform: rotate(180deg) translate(-20px, -20px); }
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  margin-bottom: 8px;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+
+.registro-header h1 {
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.registro-header p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 2;
+}
+
+.registro-form {
+  padding: 8px;
+}
+
+/* Grid: two columns for form fields */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  align-items: start;
+}
+.form-grid .form-group { margin-bottom: 8px; }
+.form-grid .form-group.span-full { grid-column: 1 / -1; }
+
+/* Ensure the file input label spans correctly and preview centers */
+.form-grid .file-upload-container { display: block; }
+.form-grid .preview-container { justify-self: start; }
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+/* Ensure inputs are above any overlapping elements and are clickable */
+.form-group { position: relative; }
+.form-group input, .form-group textarea, .form-group select {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  /* keep responsive adjustments gentle and similar to original */
+  .registro-form { padding: 25px 20px; }
+  .registro-header { padding: 30px 20px 25px; }
+}
+
+/* On very wide screens, allow the card to expand and use more horizontal space */
+@media (min-width: 1100px) {
+  .registro-container { max-width: 700px; }
+  .registro-card { box-shadow: 0 24px 48px rgba(0,0,0,0.12); }
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 4px;
+  color: #0A1B4F;
+  font-weight: 500;
+  font-size: 0.74rem;
+}
+
+.toggle-password {
+  background: transparent;
+  border: none;
+  color: #0A1B4F;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-password:focus {
+  outline: 2px solid rgba(10,27,79,0.15);
+  border-radius: 6px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 3px 8px;
+  height: 28px; /* compacto */
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.12s ease;
+  background: #fafafa;
+}
+
+/* Reserve space on the right of password inputs for the toggle button */
+.form-group.password-wrapper { position: relative; }
+
+.form-group.password-wrapper input[type="password"],
+.form-group.password-wrapper input[type="text"] {
+  padding-right: 56px; /* leave room for the toggle button */
+}
+
+.input-with-button {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-with-button input {
+  flex: 1 1 auto;
+  margin: 0;
+  height: 28px; /* match input height */
+  display: block;
+}
+
+.input-with-button .toggle-password {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,27,79,0.06);
+  border-radius: 6px;
+  border: 1px solid transparent;
+  color: #0A1B4F;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+}
+
+.toggle-password svg { width: 18px; height: 18px; display: block; }
+
+.toggle-password:hover {
+  background: rgba(10,27,79,0.10);
+  border-color: rgba(10,27,79,0.12);
+}
+
+.toggle-password:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10,27,79,0.08);
+}
+
+.toggle-password.hidden { display: none; }
+
+.toggle-password .icon-eye-off { display: none; }
+.toggle-password.active .icon-eye { display: none; }
+.toggle-password.active .icon-eye-off { display: inline-block; }
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+  outline: none;
+  border-color: #0A1B4F;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(10, 27, 79, 0.1);
+}
+
+.form-group input.error {
+  border-color: #dc3545;
+  background: #fff5f5;
+}
+
+.form-group input.success {
+  border-color: #28a745;
+  background: #f8fff9;
+}
+
+/* File Upload Styles */
+.file-upload-container {
+  position: relative;
+}
+
+.form-group input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-upload-label {
+  display: block;
+  padding: 4px;
+  border: 1px dashed #0A1B4F;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #f8f9ff;
+}
+
+.file-upload-label:hover {
+  background: #f0f2ff;
+  border-color: #32497F;
+}
+
+.file-upload-text {
+  display: block;
+  color: #0A1B4F;
+  font-weight: 500;
+  margin-bottom: 2px;
+  font-size: 0.78rem;
+}
+
+.file-upload-icon {
+  font-size: 1.5rem;
+  display: block;
+}
+
+.preview-container {
+  position: relative;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* Avatar-style preview */
+#imagePreview {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #0A1B4F;
+  object-fit: cover;
+  display: inline-block;
+}
+
+.remove-image {
+  position: absolute;
+  top: -4px;
+  right: calc(50% - 18px - 4px);
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-message {
+  display: block;
+  color: #dc3545;
+  font-size: 0.75rem;
+  margin-top: 3px;
+  min-height: 14px;
+}
+
+.help-text {
+  display: block;
+  color: #666;
+  font-size: 0.68rem;
+  margin-top: 2px;
+}
+
+.btn-registro {
+  width: 100%;
+  padding: 6px 8px;
+  background: linear-gradient(135deg, #0A1B4F 0%, #32497F 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-registro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(10, 27, 79, 0.3);
+}
+
+.btn-registro:active {
+  transform: translateY(0);
+}
+
+.btn-registro:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.loading-spinner {
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.login-link p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.login-link a {
+  color: #0A1B4F;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.message-container {
+  padding: 20px 30px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.message {
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.message-success {
+  color: #28a745;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.message-error {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .registro-container {
+    max-width: 320px;
+    padding: 6px;
+  }
+  
+  .registro-header {
+    padding: 12px 10px 10px;
+  }
+  
+  .registro-form {
+    padding: 8px 8px;
+  }
+  
+  .registro-header h1 {
+    font-size: 0.95rem;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 720px) {
+  /* collapse to single column on narrow screens */
+  .form-grid { grid-template-columns: 1fr; }
+  .input-with-button .toggle-password { right: 6px; }
+}

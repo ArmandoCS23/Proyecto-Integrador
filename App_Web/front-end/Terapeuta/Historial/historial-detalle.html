@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Historial completo - Terapeuta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../Administrador/Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="../Reportes/reportes.css">
+  <link rel="stylesheet" href="historial.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar"><img id="therapistPhoto" src="../../Administrador/Dashboard/avatar.png" alt="Terapeuta"></div>
+        <h3 id="therapistName">Terapeuta</h3>
+        <p id="therapistEmail" class="muted">correo@ejemplo.com</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboardt.html'">Inicio</li>
+          <li onclick="window.location.href='../Pacientes/pacientes.html'">Pacientes</li>
+          <li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Reportes/Reportes.html'">Reportes</li>
+          <li class="active" onclick="window.location.href='historial-detalle.html'">Historial</li>
+          <li onclick="window.location.href='../messages.html'">Mensajes</li>
+          <li onclick="logoutTherapist()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:20px">
+        <h1 id="histTitle" style="margin:0;flex:1">Historial del paciente</h1>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button id="goBack" class="btn">Volver</button>
+          <button id="downloadPdf" class="btn">Descargar PDF</button>
+        </div>
+      </div>
+
+      <div id="histContent" class="patient-report">
+        <div class="empty-state">Cargando historial...</div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="historial-detalle.js"></script>
+  <script src="../shared/therapist-manager.js"></script>
+</body>
+</html>

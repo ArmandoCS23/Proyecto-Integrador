@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dar de alta paciente - Administrador</title>
+		<link rel="stylesheet" href="../Dashboard/dashboard-admin.css">
+		<link rel="stylesheet" href="alta-paciente.css">
+</head>
+<body>
+	<div class="dashboard-container">
+		<aside class="sidebar">
+			<div class="profile">
+				<div class="avatar"><img id="adminPhoto" src="../Dashboard/avatar.png" alt="Administrador"></div>
+				<h3 id="adminName">Administrador</h3>
+				<p id="adminEmail" class="muted"></p>
+			</div>
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='../Dashboard/dashboard-admin.html'">Inicio</li>
+					<li onclick="window.location.href='../terapeuta/terapeutas.html'">Terapeutas</li>
+					<li onclick="window.location.href='../Pacientes/pacientes.html'">Pacientes</li>
+					<li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+					<li onclick="window.location.href='../Dar de alta paciente/alta-paciente.html'" class="active">Dar de alta paciente</li>
+					<li onclick="window.location.href='../Dar de alta terapeuta/alta-terapeuta.html'">Dar de alta terapeuta</li>
+					<li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+					<li onclick="logoutAdmin()">Cerrar sesión</li>
+				</ul>
+			</nav>
+		</aside>
+
+		<main class="main-content">
+			<h1>Dar de alta paciente</h1>
+			<div class="form-card form-card--styled">
+			  <div class="form-header-compact">
+			    <div class="avatar-placeholder">👥</div>
+			    <div>
+			      <h2 class="title">Nuevo paciente</h2>
+			      <p class="subtitle muted">Completa los datos básicos para registrar al paciente</p>
+			    </div>
+			  </div>
+			  <form id="adminNewPatientForm" class="styled-form">
+			    <div class="grid-2">
+			      <label class="field">
+			        <span class="label">Nombre completo</span>
+			        <div class="field-row">
+			          <input id="name" name="name" required placeholder="Ej: Juan Pérez">
+			        </div>
+			      </label>
+			      <label class="field">
+			        <span class="label">Edad</span>
+			        <input id="age" name="age" type="number" min="0" placeholder="35">
+			      </label>
+			    </div>
+
+			    <div class="grid-2">
+			      <label class="field">
+			        <span class="label">Teléfono</span>
+			        <input id="phone" name="phone" placeholder="555-123-4567">
+			      </label>
+			      <label class="field">
+			        <span class="label">Estado</span>
+			        <select id="status" name="status"><option>Activo</option><option>En seguimiento</option><option>Completado</option></select>
+			      </label>
+			    </div>
+
+			    <div class="grid-2">
+			      <label class="field">
+			        <span class="label">Correo electrónico</span>
+			        <input id="email" name="email" type="email" required placeholder="paciente@ejemplo.com">
+			      </label>
+			      <label class="field">
+			        <span class="label">Contraseña</span>
+			        <input id="password" name="password" type="password" required placeholder="Contraseña segura">
+			      </label>
+			    </div>
+
+			    <p class="hint" style="color:#64748b; font-size:0.85rem; margin-top:-8px">Estos datos se usarán para que el paciente inicie sesión en la app móvil.</p>
+
+			    <div class="grid-2">
+			      <label class="field">
+			        <span class="label">Diagnóstico</span>
+			        <select id="diagnosis" name="diagnosis">
+			          <option value="Espondilólisis">Espondilólisis</option>
+			          <option value="Escoliosis lumbar">Escoliosis lumbar</option>
+			          <option value="Hernia de disco lumbar">Hernia de disco lumbar</option>
+			          <option value="Lumbalgia mecánica inespecífica">Lumbalgia mecánica inespecífica</option>
+			        </select>
+			      </label>
+			      <label class="field">
+			        <span class="label">Terapeuta asignado</span>
+			        <select id="assignedTherapist"></select>
+			      </label>
+			    </div>
+
+				<label class="field">
+					<span class="label">Foto del paciente</span>
+					<div class="field-row">
+						<input id="photo" name="photo" type="file" accept="image/*">
+					</div>
+					<div style="margin-top:8px;">
+						<img id="photoPreview" src="" alt="Previsualización" style="max-width:120px; max-height:120px; display:none; border-radius:6px; object-fit:cover;">
+					</div>
+				</label>
+
+			    <label class="field">
+			      <span class="label">Resumen clínico</span>
+			      <textarea id="summary" name="summary" rows="4" placeholder="Notas breves"></textarea>
+			    </label>
+
+			    <div class="form-actions">
+			      <button type="button" class="btn btn-secondary" onclick="window.location.href='../Pacientes/pacientes.html'">Cancelar</button>
+			      <button type="submit" class="btn btn-primary">Guardar paciente</button>
+			    </div>
+			  </form>
+			</div>
+				<!-- Confirmation modal -->
+				<div id="confirmModal" class="modal-overlay" aria-hidden="true">
+				  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+				    <button class="modal-close" aria-label="Cerrar">×</button>
+				    <h2 id="confirmTitle">¿Seguro que quieres registrar a este paciente?</h2>
+				    <p class="muted">Revisa que los datos sean correctos antes de continuar.</p>
+				    <div class="modal-actions">
+				      <button id="cancelConfirm" class="btn btn-secondary">Cancelar</button>
+				      <button id="confirmSave" class="btn btn-primary">Sí, registrar</button>
+				    </div>
+				  </div>
+				</div>
+
+				<!-- Success overlay (hidden until save) -->
+				<div id="successOverlay" class="success-overlay" aria-hidden="true">
+				  <div class="success-card">
+				    <div class="check">
+				      <!-- SVG check for crisper rendering -->
+				      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+				        <circle cx="12" cy="12" r="12" fill="url(#g)" />
+				        <path d="M6.5 12.5l3 3 7-7" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+				        <defs>
+				          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+				            <stop offset="0%" stop-color="#2b7cff"/>
+				            <stop offset="100%" stop-color="#1e5fe3"/>
+				          </linearGradient>
+				        </defs>
+				      </svg>
+				    </div>
+				    <h2>¡Registrado con éxito!</h2>
+				    <p>El paciente se creó correctamente.</p>
+				    <div class="success-actions">
+				      <button id="goToPatients" class="btn btn-primary">Ver pacientes</button>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+			<script src="../shared/local-store.js"></script>
+			<script src="alta-paciente.js"></script>
+			<script src="../Dashboard/admin-manager.js"></script>
+			<!-- Fallback: ensure admin profile is applied from localStorage if admin-manager didn't run yet -->
+			<script>
+			(function(){
+			  try{
+			    var raw = localStorage.getItem('currentUser_admin') || null;
+			    var u = raw ? JSON.parse(raw) : null;
+			    if(!u && window.localStore && typeof window.localStore.getCurrentUser === 'function') u = window.localStore.getCurrentUser();
+			    if(u){
+			      var nameEl = document.getElementById('adminName');
+			      var emailEl = document.getElementById('adminEmail');
+			      var photoEl = document.getElementById('adminPhoto');
+			      if(nameEl) nameEl.textContent = u.name || u.fullname || u.email || '';
+			      if(emailEl){ emailEl.textContent = u.email || u.mail || ''; emailEl.style.display = emailEl.textContent ? '' : 'none'; }
+			      if(photoEl && (u.photo||u.photoUrl||u.avatar)){
+			        try{ photoEl.setAttribute('src', u.photo || u.photoUrl || u.avatar); photoEl.style.display=''; }catch(e){}
+			      }
+			    }
+			  }catch(e){ /* ignore */ }
+			})();
+			</script>
+</body>
+</html>

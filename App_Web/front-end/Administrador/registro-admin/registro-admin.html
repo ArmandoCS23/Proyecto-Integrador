@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Administrador</title>
+  <link rel="stylesheet" href="registro-admin.css">
+</head>
+<body>
+  <div class="registro-container">
+    <div class="registro-card">
+      <div class="registro-header">
+        <img src="../login/logo.webp" alt="Logo Fisioterapia" class="logo">
+        <h1>Registro de Administrador</h1>
+        <p>Crea tu cuenta de administrador para gestionar el sistema</p>
+      </div>
+
+  <form id="registroForm" class="registro-form" enctype="multipart/form-data" autocomplete="off">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" required maxlength="50" autocomplete="off">
+            <span class="error-message" id="errorNombre"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico *</label>
+            <input type="email" id="email" name="email" required autocomplete="off">
+            <span class="error-message" id="errorEmail"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="clinic">Clínica / Centro de trabajo *</label>
+            <input type="text" id="clinic" name="clinic" required maxlength="150" autocomplete="off">
+            <span class="error-message" id="errorClinic"></span>
+          </div>
+
+          <div class="form-group password-wrapper">
+            <label for="password">Contraseña *</label>
+            <div class="input-with-button">
+              <input type="password" id="password" name="password" required minlength="6" autocomplete="off">
+              <button type="button" class="toggle-password" data-target="password" aria-pressed="false" aria-label="Mostrar contraseña">
+                <span class="icon icon-eye" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="icon icon-eye-off" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.64 21.64 0 0 1 5.06-6.46" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M1 1l22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <span class="error-message" id="errorPassword"></span>
+            <small class="help-text">Mínimo 6 caracteres</small>
+          </div>
+
+          <div class="form-group password-wrapper">
+            <label for="confirmarPassword">Confirmar contraseña *</label>
+            <div class="input-with-button">
+              <input type="password" id="confirmarPassword" name="confirmarPassword" required minlength="6" autocomplete="off">
+              <button type="button" class="toggle-password" data-target="confirmarPassword" aria-pressed="false" aria-label="Mostrar confirmar contraseña">
+                <span class="icon icon-eye" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="icon icon-eye-off" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.64 21.64 0 0 1 5.06-6.46" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M1 1l22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <span class="error-message" id="errorConfirmarPassword"></span>
+          </div>
+
+          <div class="form-group span-full">
+            <label for="fotoPerfil">Foto de perfil (opcional)</label>
+            <div class="file-upload-container">
+              <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" autocomplete="off">
+              <label for="fotoPerfil" class="file-upload-label">
+                <span class="file-upload-text">Seleccionar imagen</span>
+                <span class="file-upload-icon">📷</span>
+              </label>
+              <div class="preview-container" id="previewContainer" style="display: none;">
+                <img id="imagePreview" alt="Vista previa">
+                <button type="button" class="remove-image" onclick="removeImage()">✕</button>
+              </div>
+            </div>
+            <span class="error-message" id="errorFotoPerfil"></span>
+            <small class="help-text">Formatos permitidos: JPG, PNG, GIF (máx. 5MB)</small>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-registro" id="btnRegistro">
+          <span class="btn-text">Registrar Administrador</span>
+          <div class="loading-spinner" style="display: none;"></div>
+        </button>
+
+        <div class="login-link">
+          <p>¿Ya tienes una cuenta? <a href="../login/index.html">Inicia sesión aquí</a></p>
+        </div>
+      </form>
+
+      <!-- Mensaje de resultado -->
+      <div class="message-container" id="messageContainer" style="display: none;">
+        <div class="message" id="message"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../shared/local-store.js"></script>
+  <script src="registro-admin.js"></script>
+  <script src="../Dashboard/admin-manager.js"></script>
+</body>
+</html>

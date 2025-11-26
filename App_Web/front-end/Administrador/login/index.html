@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physionext Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="left-panel">
+            <div class="logo">
+                <img src="logo.webp" alt="Physionext Logo" class="logo-image">
+            </div>
+            <div class="shapes">
+                <div class="shape pink-1"></div>
+                <div class="shape blue-1"></div>
+                <div class="shape green-1"></div>
+                <div class="shape pink-2"></div>
+            </div>
+            <div class="footer-links">
+                <a href="../registro-admin/registro-admin.html" id="registroAdmin">Registro Admin</a>
+                <a href="privacidad.html" id="privacidad">Privacidad</a>
+            </div>
+        </div>
+        <div class="right-panel">
+            <form id="loginForm" class="login-form">
+                <h2>Log in</h2>
+                <div id="loginMessage" class="login-message" style="display:none;margin-bottom:8px"></div>
+                <!-- Role selector: Administrador / Terapeuta -->
+                <div class="role-toggle" role="tablist" aria-label="Seleccionar rol">
+                    <button type="button" class="role-btn active" data-role="admin" aria-pressed="true">Administrador</button>
+                    <button type="button" class="role-btn" data-role="therapist" aria-pressed="false">Terapeuta</button>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="password" name="password" autocomplete="off">
+                        <span class="password-toggle" id="togglePassword"></span>
+                    </div>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox"> Keep me logged in
+                    </label>
+                </div>
+                <button type="submit" class="login-btn" id="loginBtn">Log in</button>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login script: uses backend API for authentication -->
+        <script src="../../shared/local-store.js"></script>
+        <script src="login.js"></script>
+        <script>
+            // Hide Registro Admin link if an admin already exists (robust check)
+            // Checks multiple sources: localStore helper, explicit 'admins', 'registeredClinics' or a persisted current admin
+            (function(){
+                try{
+                    var hide = false;
+                    // 1) Check custom localStore helper if available
+                    if(window.localStore && typeof localStore.getAdmins === 'function'){
+                        try{ var admins = localStore.getAdmins(); if(Array.isArray(admins) && admins.length>0) hide = true; }catch(e){}
+                    }
+                    // 2) Check explicit admins array in localStorage
+                    if(!hide){ try{ var admins2 = JSON.parse(localStorage.getItem('admins')||'[]'); if(Array.isArray(admins2) && admins2.length>0) hide = true; }catch(e){} }
+                    // 3) Check registeredClinics (if there's at least one registered clinic hide register link)
+                    if(!hide){ try{ var regs = JSON.parse(localStorage.getItem('registeredClinics')||'[]'); if(Array.isArray(regs) && regs.length>0) hide = true; }catch(e){} }
+                    // 4) Check if a current admin is persisted
+                    if(!hide){ try{ var cur = localStorage.getItem('currentUser_admin') || localStorage.getItem('currentUser'); if(cur) hide = true; }catch(e){} }
+
+                    if(hide){ const el = document.getElementById('registroAdmin'); if(el) el.style.display='none'; }
+                }catch(e){ /* ignore */ }
+            })();
+        </script>
+        <script src="../Dashboard/admin-manager.js"></script>
+</body>
+</html>

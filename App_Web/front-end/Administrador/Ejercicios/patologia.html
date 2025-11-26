@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patología - Administrador</title>
+  <link rel="stylesheet" href="../Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="patologia.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- sidebar copied from canonical dashboard -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar"><img id="adminPhoto" src="../Dashboard/avatar.png" alt="Administrador"></div>
+        <h3 id="adminName">Administrador</h3>
+        <p id="adminEmail" class="muted"></p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboard-admin.html'">Inicio</li>
+          <li onclick="window.location.href='../terapeuta/terapeutas.html'">Terapeutas</li>
+          <li onclick="window.location.href='../Pacientes/pacientes.html'">Pacientes</li>
+          <li onclick="window.location.href='ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Dar de alta paciente/alta-paciente.html'">Dar de alta paciente</li>
+          <li onclick="window.location.href='../Dar de alta terapeuta/alta-terapeuta.html'">Dar de alta terapeuta</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="logoutAdmin()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <h1 id="patologiaTitle">Patología</h1>
+      <p id="patologiaDesc" style="color:#234; margin-bottom:12px;">Administra los ejercicios predeterminados para esta patología. Puedes crear ejercicios y asignarlos a terapeutas (opcionalmente a pacientes del terapeuta).</p>
+
+      <div class="patologia-grid">
+        <section class="left">
+          <div class="card-form">
+            <h2>Nuevo ejercicio predeterminado</h2>
+            <form id="exerciseForm">
+              <label>Nombre</label>
+              <input type="text" id="exName" placeholder="Ej. Fortalecimiento lumbar" required>
+
+              <label>Descripción</label>
+              <textarea id="exDesc" placeholder="Breve descripción" rows="4"></textarea>
+
+              <label>Asignar inmediatamente</label>
+              <div style="display:flex; gap:8px; align-items:center;">
+                <select id="exAssignTherapist">
+                  <option value="">(Seleccionar terapeuta, opcional)</option>
+                </select>
+                <select id="exAssignPatient">
+                  <option value="">(Paciente opcional)</option>
+                </select>
+              </div>
+              <label style="margin-top:8px">Semana</label>
+              <input type="text" id="exAssignWeek" placeholder="Ej. Semana 1" />
+              
+              <!-- contenedor de mensajes del formulario (errores / confirmaciones) -->
+              <div id="formMessage" class="form-message" aria-live="polite" role="status" hidden></div>
+
+              <!-- video selection: hidden fields will ser rellenadas cuando el admin seleccione un video en la lista de la derecha -->
+              <input type="hidden" id="exMediaRefId" value="">
+              <input type="hidden" id="exMediaRefType" value="">
+
+              <div class="form-actions">
+                <!-- Botón eliminado por petición del usuario; se conserva 'Asignar ahora' y 'Limpiar' -->
+                <button type="button" id="assignNowBtn" class="btn btn-primary">Asignar ahora</button>
+                <button type="button" id="resetForm" class="btn btn-secondary">Limpiar</button>
+              </div>
+            </form>
+
+            <!-- Multi-assign interface removed per user request -->
+          </div>
+        </section>
+
+        <section class="right">
+          <div class="card-list">
+            <div id="bundledVideosList" class="bundled-videos-list">
+              <!-- bundled videos rendered here as cards -->
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../Dashboard/admin-manager.js"></script>
+  <script src="patologia.js"></script>
+</body>
+</html>

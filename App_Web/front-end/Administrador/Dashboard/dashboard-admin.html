@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Administrador</title>
+  <link rel="stylesheet" href="dashboard-admin.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar">
+          <img id="adminPhoto" src="avatar.png" alt="Administrador">
+        </div>
+        <h3 id="adminName">Administrador</h3>
+        <p id="adminEmail" class="muted">admin@ejemplo.com</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboard-admin.html'" class="active">Inicio</li>
+          <li onclick="window.location.href='../terapeuta/terapeutas.html'">Terapeutas</li>
+          <li onclick="window.location.href='../Pacientes/pacientes.html'">Pacientes</li>
+          <li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Dar de alta paciente/alta-paciente.html'">Dar de alta paciente</li>
+          
+          <li onclick="window.location.href='../Dar de alta terapeuta/alta-terapeuta.html'">Dar de alta terapeuta</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="logoutAdmin()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Administración</h1>
+      <div class="cards">
+        <div class="card" onclick="window.location.href='../terapeuta/terapeutas.html'">
+          <div class="icon">👨‍⚕️</div>
+          <div class="title">Terapeutas</div>
+          <div class="count" id="therapistsCount">Cargando...</div>
+        </div>
+        <div class="card" onclick="window.location.href='../Pacientes/pacientes.html'">
+          <div class="icon">👥</div>
+          <div class="title">Pacientes</div>
+          <div class="count" id="patientsCount">Cargando...</div>
+        </div>
+        <div class="card" onclick="window.location.href='../Dar de alta paciente/alta-paciente.html'">
+          <div class="icon">➕</div>
+          <div class="title">Dar de alta paciente</div>
+          <div class="count" id="newPatientsCount">Registrar</div>
+        </div>
+        <div class="card" onclick="window.location.href='../Ejercicios/ejercicios.html'">
+          <div class="icon">🧩</div>
+          <div class="title">Ejercicios</div>
+          <div class="count" id="exercisesCount">Ver</div>
+        </div>
+        <div class="card" onclick="window.location.href='../Dar de alta terapeuta/alta-terapeuta.html'">
+          <div class="icon">➕</div>
+          <div class="title">Dar de alta terapeuta</div>
+          <div class="count" id="newTherapistsCount">Registrar</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="admin-manager.js"></script>
+  <script src="dashboard-admin.js"></script>
+</body>
+</html>

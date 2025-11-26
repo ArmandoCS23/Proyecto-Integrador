@@ -1,0 +1,138 @@
+[2025-11-18 00:01:54] No se detectan posturas - reiniciando cámara para recuperar.
+[2025-11-18 00:05:51] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:09:25] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:09:25] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:09:30] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:09:36] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=3
+[2025-11-18 00:09:41] DIAGNOSTIC: camera_index=0 frames_total=6 frames_with_landmarks=6
+[2025-11-18 00:09:46] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:09:51] Detección: camera_index=0 first_lm=(0.363,0.368,-2.151)
+[2025-11-18 00:09:51] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:09:56] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:10:01] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:10:43] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:10:43] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:10:48] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:10:53] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:10:58] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:03] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:08] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:13] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:18] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:23] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:28] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:33] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:38] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:43] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:11:48] DIAGNOSTIC: camera_index=0 frames_total=5 frames_with_landmarks=5
+[2025-11-18 00:13:18] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:13:18] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:13:23] DIAGNOSTIC: camera_index=0 frames_total=8 frames_with_landmarks=6
+[2025-11-18 00:13:28] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=4
+[2025-11-18 00:13:33] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:13:38] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:13:43] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=8
+[2025-11-18 00:13:48] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=7
+[2025-11-18 00:13:53] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=8
+[2025-11-18 00:13:58] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:14:03] Detección: camera_index=0 first_lm=(0.322,0.323,-1.790)
+[2025-11-18 00:14:03] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:15:36] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:15:36] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:15:41] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:15:46] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:15:51] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:15:56] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:16:01] Detección: camera_index=0 first_lm=(0.373,0.440,-2.127)
+[2025-11-18 00:16:01] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:16:06] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:16:11] Detección: camera_index=0 first_lm=(0.462,0.426,-2.831)
+[2025-11-18 00:16:11] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:16:16] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:16:21] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:16:26] Detección: camera_index=0 first_lm=(0.438,0.447,-3.171)
+[2025-11-18 00:16:26] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:16:31] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:16:36] Detección: camera_index=0 first_lm=(0.457,0.439,-2.394)
+[2025-11-18 00:16:36] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:16:41] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:16:46] Detección: camera_index=0 first_lm=(0.460,0.439,-2.335)
+[2025-11-18 00:16:46] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:16:51] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:16:56] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:17:01] Detección: camera_index=0 first_lm=(0.444,0.455,-2.635)
+[2025-11-18 00:17:01] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:17:06] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:17:11] Detección: camera_index=0 first_lm=(0.160,0.409,-1.377)
+[2025-11-18 00:17:11] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:18:10] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:18:10] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:18:16] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:18:21] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:18:26] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:18:31] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:18:36] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:18:41] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=8
+[2025-11-18 00:18:46] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:18:51] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:18:56] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:19:01] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=5
+[2025-11-18 00:19:06] Detección: camera_index=0 first_lm=(0.205,0.265,-1.713)
+[2025-11-18 00:19:06] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:19:11] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:19:16] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:19:21] Detección: camera_index=0 first_lm=(0.226,0.329,-1.641)
+[2025-11-18 00:19:21] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:19:26] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:19:31] Detección: camera_index=0 first_lm=(0.209,0.425,-1.712)
+[2025-11-18 00:19:31] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:19:36] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:19:41] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:19:46] Detección: camera_index=0 first_lm=(0.476,0.358,-2.457)
+[2025-11-18 00:19:46] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:19:51] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:19:56] Detección: camera_index=0 first_lm=(0.474,0.345,-1.841)
+[2025-11-18 00:19:56] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:20:01] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:20:06] Detección: camera_index=0 first_lm=(0.134,0.266,-1.523)
+[2025-11-18 00:20:06] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:20:11] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:20:50] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:20:50] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:20:55] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:21:00] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:21:05] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:21:10] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:21:15] Detección: camera_index=0 first_lm=(0.458,0.433,-2.578)
+[2025-11-18 00:21:15] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:21:20] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:21:25] Detección: camera_index=0 first_lm=(0.261,0.228,-1.899)
+[2025-11-18 00:21:25] DIAGNOSTIC: camera_index=0 frames_total=10 frames_with_landmarks=10
+[2025-11-18 00:22:22] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:22:22] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:22:27] DIAGNOSTIC: camera_index=0 frames_total=8 frames_with_landmarks=5
+[2025-11-18 00:22:32] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=5
+[2025-11-18 00:22:37] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=9
+[2025-11-18 00:22:42] DIAGNOSTIC: camera_index=0 frames_total=9 frames_with_landmarks=1
+[2025-11-18 00:22:46] No se detectan posturas - reiniciando cámara para recuperar.
+[2025-11-18 00:22:46] Watchdog: liberando cámara por falta de detecciones
+[2025-11-18 00:22:52] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:22:52] DIAGNOSTIC: camera_index=0 frames_total=7 frames_with_landmarks=0
+[2025-11-18 00:22:52] No se detectan posturas - reiniciando cámara para recuperar.
+[2025-11-18 00:22:52] Watchdog: liberando cámara por falta de detecciones
+[2025-11-18 00:22:58] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:22:59] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:22:59] No se detectan posturas - reiniciando cámara para recuperar.
+[2025-11-18 00:22:59] Watchdog: liberando cámara por falta de detecciones
+[2025-11-18 00:23:05] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:23:05] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:23:05] No se detectan posturas - reiniciando cámara para recuperar.
+[2025-11-18 00:23:05] Watchdog: liberando cámara por falta de detecciones
+[2025-11-18 00:23:11] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:23:12] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:23:12] No se detectan posturas - reiniciando cámara para recuperar.
+[2025-11-18 00:23:12] Watchdog: liberando cámara por falta de detecciones
+[2025-11-18 00:23:18] Cámara abierta índice=0, fps=30.0
+[2025-11-18 00:23:18] DIAGNOSTIC: camera_index=0 frames_total=0 frames_with_landmarks=0
+[2025-11-18 00:23:18] No se detectan posturas - reiniciando cámara para recuperar.
+[2025-11-18 00:23:18] Watchdog: liberando cámara por falta de detecciones

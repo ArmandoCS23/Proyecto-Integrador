@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --primary-blue: #0d215c;
+    --secondary-blue: #0a2565;
+    --light-green: #0fa4a4;
+    --light-pink: #f3798f;
+    --text-color: #555;
+    --border-color: #ccc;
+    --button-bg: #89E4E4;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f3f355;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    height: 700px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Mensajes del login */
+.mensaje-login {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: none;
+}
+
+.mensaje-login.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.mensaje-login.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.left-panel {
+    flex: 1;
+    background-color: #F8F8F8;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+.logo-image {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+/* Nuevas posiciones y tamaños para los círculos */
+.pink-1 {
+    width: 250px;
+    height: 250px;
+    background-color: var(--light-pink);
+    top: -50px;
+    left: -50px;
+}
+
+.blue-1 {
+    width: 300px;
+    height: 300px;
+    background-color: var(--secondary-blue);
+    top: -80px;
+    right: -80px;
+}
+
+.green-1 {
+    width: 200px;
+    height: 200px;
+    background-color: var(--light-green);
+    bottom: -50px;
+    left: 20%;
+    transform: translateX(-50%);
+}
+
+.pink-2 {
+    width: 180px;
+    height: 180px;
+    background-color: var(--light-pink);
+    bottom: -70px;
+    right: -70px;
+}
+
+/* Nuevo círculo para mejor equilibrio visual */
+.shape.blue-2 {
+    width: 100px;
+    height: 100px;
+    background-color: var(--secondary-blue);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+
+.footer-links {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.9rem;
+}
+
+.right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.login-form {
+    width: 80%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.login-form h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 30px;
+}
+
+/* Role selector styles */
+.role-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.role-btn {
+    flex: 1;
+    padding: 8px 12px;
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease-in-out;
+    text-align: center;
+}
+
+.role-btn.active {
+    background: linear-gradient(90deg, var(--button-bg), #6fe0df);
+    color: var(--primary-blue);
+    border-color: rgba(13,33,92,0.08);
+    box-shadow: 0 6px 18px rgba(14,33,92,0.06);
+    transform: translateY(-2px);
+}
+
+.role-btn:focus {
+    outline: 3px solid rgba(13,33,92,0.08);
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-bottom-color: var(--primary-blue);
+}
+
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ccc'%3E%3Cpath d='M12 4.5C7 4.5 2.73 7.61 0 12c2.73 4.39 7 7.5 12 7.5s9.27-3.11 12-7.5c-2.73-4.39-7-7.5-12-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.options {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.options input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--button-bg);
+    color: var(--primary-blue);
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #71d9d9;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.forgot-password:hover {
+    color: var(--primary-blue);
+}

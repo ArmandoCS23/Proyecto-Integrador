@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Dashboard Terapeuta</title>
+		<!-- Estilos canónicos del Administrador (sidebar compartido) -->
+		<link rel="stylesheet" href="../../Administrador/Dashboard/dashboard-admin.css" />
+		<link rel="stylesheet" href="dashboardt.css" />
+		<link rel="stylesheet" href="../Historial/Historial.css" />
+	</head>
+<body>
+	<div class="dashboard-container">
+		<aside class="sidebar">
+		  <div class="profile">
+			<div class="avatar">
+			  <img id="therapistPhoto" src="../Administrador/Dashboard/avatar.png" alt="Terapeuta">
+			</div>
+			<h3 id="therapistName">Terapeuta</h3>
+			<p id="therapistEmail" class="muted">correo@ejemplo.com</p>
+		  </div>
+					<nav class="menu">
+						<ul>
+							<li class="active" onclick="window.location.href='dashboardt.html'">Inicio</li>
+							<li onclick="window.location.href='../Pacientes/pacientes.html'">Pacientes</li>
+							<li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+							<li onclick="window.location.href='../Reportes/Reportes.html'">Reportes</li>
+							<li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+							<li onclick="window.location.href='../messages.html'">Mensajes</li>
+							<li onclick="logoutTherapist()">Cerrar sesión</li>
+						</ul>
+					</nav>
+		</aside>
+
+			<main class="main-content">
+				<header class="main-header">
+					<div>
+						<h1>Panel del Terapeuta</h1>
+						<p class="muted">Resumen rápido — datos actualizados localmente</p>
+					</div>
+					<button class="btn-messages" onclick="window.location.href='../messages.html'" title="Ir a mensajes">� Mensajes</button>
+				</header>
+				<div class="dashboard-quick-section" aria-label="Accesos y resumen">
+					<div class="quick-cards" aria-label="Atajos del dashboard">
+						<a class="qc-card qc-card--patients" href="../Pacientes/pacientes.html">
+						<div class="qc-icon">�</div>
+						<div class="qc-body">
+							<span class="qc-title">Pacientes</span>
+							<span class="qc-sub">Ver a tus pacientes asignados</span>
+						</div>
+					</a>
+						<a class="qc-card qc-card--exercises" href="../Ejercicios/ejercicios.html">
+						<div class="qc-icon">⚙️</div>
+						<div class="qc-body">
+							<span class="qc-title">Ejercicios</span>
+							<span class="qc-sub">Asignar nuevas rutinas</span>
+						</div>
+					</a>
+						<a class="qc-card qc-card--wide qc-card--reports" href="../Reportes/Reportes.html">
+						<div class="qc-icon">📊</div>
+						<div class="qc-body">
+							<span class="qc-title">Reportes</span>
+							<span class="qc-sub">Revisar estadísticas clave</span>
+						</div>
+					</a>
+						<a class="qc-card qc-card--history" href="../Historial/historial.html">
+						<div class="qc-icon">🗂️</div>
+						<div class="qc-body">
+							<span class="qc-title">Historial</span>
+							<span class="qc-sub">Acceder a seguimientos previos</span>
+						</div>
+					</a>
+						<a class="qc-card qc-card--messages" href="../messages.html">
+						<div class="qc-icon">💬</div>
+						<div class="qc-body">
+							<span class="qc-title">Mensajes</span>
+							<span class="qc-sub">Contactar con pacientes</span>
+						</div>
+					</a>
+					</div>
+				</div>
+
+				<script src="../current-therapist.js"></script>
+
+				</main>
+		
+				<!-- Nueva sesión removed -->
+		</div>
+	
+	<!-- Therapist manager: ensures sidebar profile is populated from localStore/currentUser_therapist -->
+	<script src="../shared/therapist-manager.js"></script>
+	<script src="dashboardt.js"></script>
+	<script src="../Historial/Historial.js"></script>
+</body>
+</html>
+

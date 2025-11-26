@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios - Administrador</title>
+  <link rel="stylesheet" href="../Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="ejercicios.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar"><img id="adminPhoto" src="../Dashboard/avatar.png" alt="Administrador"></div>
+        <h3 id="adminName">Administrador</h3>
+        <p id="adminEmail" class="muted"></p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboard-admin.html'">Inicio</li>
+          <li onclick="window.location.href='../terapeuta/terapeutas.html'">Terapeutas</li>
+          <li onclick="window.location.href='../Pacientes/pacientes.html'">Pacientes</li>
+          <li class="active">Ejercicios</li>
+          <li onclick="window.location.href='../Dar de alta paciente/alta-paciente.html'">Dar de alta paciente</li>
+          <li onclick="window.location.href='../Dar de alta terapeuta/alta-terapeuta.html'">Dar de alta terapeuta</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="logoutAdmin()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <h1>Ejercicios — Patologías</h1>
+      <p style="color:#234; margin-bottom:12px;">Selecciona una patología para ver los ejercicios asociados o administrar contenido.</p>
+
+      <div class="cards" style="max-width:1100px; margin-top:20px;">
+        <div class="card" onclick="window.location.href='patologia.html?key=espondilolisis'">
+          <div class="icon">🦴</div>
+          <div class="title">Espondilólisis</div>
+          <div class="count" id="count-espondilolisis">Ejercicios: 0</div>
+        </div>
+
+        <div class="card" onclick="window.location.href='patologia.html?key=escoliosis'">
+          <div class="icon">🧭</div>
+          <div class="title">Escoliosis lumbar</div>
+          <div class="count" id="count-escoliosis">Ejercicios: 0</div>
+        </div>
+
+        <div class="card" onclick="window.location.href='patologia.html?key=hernia'">
+          <div class="icon">💥</div>
+          <div class="title">Hernia de disco lumbar</div>
+          <div class="count" id="count-hernia">Ejercicios: 0</div>
+        </div>
+
+        <div class="card" onclick="window.location.href='patologia.html?key=lumbalgia'">
+          <div class="icon">🏃‍♂️</div>
+          <div class="title">Lumbalgia mecánica inespecífica</div>
+          <div class="count" id="count-lumbalgia">Ejercicios: 0</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../Dashboard/admin-manager.js"></script>
+  <script>
+    (function(){
+      function safeText(id, txt){
+        var el = document.getElementById(id);
+        if(el) el.textContent = txt;
+      }
+
+      fetch('videos/manifest.json')
+        .then(function(res){ if(!res.ok) throw new Error('No se pudo cargar manifest'); return res.json(); })
+        .then(function(list){
+          var counts = { espondilolisis:0, escoliosis:0, hernia:0, lumbalgia:0 };
+          list.forEach(function(item){
+            var p = item.path || '';
+            if(p.indexOf('Espondilólisis/') !== -1) counts.espondilolisis++;
+            else if(p.indexOf('Escoliosis lumbar/') !== -1) counts.escoliosis++;
+            else if(p.indexOf('Hernia de disco lumbar/') !== -1) counts.hernia++;
+            else if(p.indexOf('Lumbalgia mecánica inespecífica/') !== -1) counts.lumbalgia++;
+          });
+
+          safeText('count-espondilolisis', 'Ejercicios: ' + counts.espondilolisis);
+          safeText('count-escoliosis', 'Ejercicios: ' + counts.escoliosis);
+          safeText('count-hernia', 'Ejercicios: ' + counts.hernia);
+          safeText('count-lumbalgia', 'Ejercicios: ' + counts.lumbalgia);
+        })
+        .catch(function(err){
+          safeText('count-espondilolisis', 'Ejercicios: -');
+          safeText('count-escoliosis', 'Ejercicios: -');
+          safeText('count-hernia', 'Ejercicios: -');
+          safeText('count-lumbalgia', 'Ejercicios: -');
+          console.error('Error cargando manifest:', err);
+        });
+    })();
+  </script>
+  <!-- Fallback: ensure admin profile is applied from localStorage if admin-manager didn't run yet -->
+  <script>
+  (function(){
+    try{
+      var raw = localStorage.getItem('currentUser_admin') || null;
+      var u = raw ? JSON.parse(raw) : null;
+      if(!u && window.localStore && typeof window.localStore.getCurrentUser === 'function') u = window.localStore.getCurrentUser();
+      if(u){
+        var nameEl = document.getElementById('adminName');
+        var emailEl = document.getElementById('adminEmail');
+        var photoEl = document.getElementById('adminPhoto');
+        if(nameEl) nameEl.textContent = u.name || u.fullname || u.email || '';
+        if(emailEl){ emailEl.textContent = u.email || u.mail || ''; emailEl.style.display = emailEl.textContent ? '' : 'none'; }
+        if(photoEl && (u.photo||u.photoUrl||u.avatar)){
+          try{ photoEl.setAttribute('src', u.photo || u.photoUrl || u.avatar); photoEl.style.display=''; }catch(e){}
+        }
+      }
+    }catch(e){ /* ignore */ }
+  })();
+  </script>
+</body>
+</html>

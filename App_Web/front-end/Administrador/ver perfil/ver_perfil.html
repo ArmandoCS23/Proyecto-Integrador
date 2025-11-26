@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ver perfil - Administrador</title>
+  <link rel="stylesheet" href="../Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="ver_perfil.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar"><img id="adminPhoto" src="../Dashboard/avatar.png" alt="Administrador"></div>
+        <h3 id="adminName">Administrador</h3>
+        <p id="adminEmail" class="muted"></p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboard-admin.html'">Inicio</li>
+          <li onclick="window.location.href='../terapeuta/terapeutas.html'">Terapeutas</li>
+          <li class="active" onclick="window.location.href='../Pacientes/pacientes.html'">Pacientes</li>
+          <li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Dar de alta paciente/alta-paciente.html'">Dar de alta paciente</li>
+          <li onclick="window.location.href='../Dar de alta terapeuta/alta-terapeuta.html'">Dar de alta terapeuta</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="logoutAdmin()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <h1>Perfil del paciente</h1>
+
+      <section class="profile-panel" id="profilePanel">
+        <div class="profile-header">
+          <div class="profile-summary">
+            <div class="avatar-box"><img id="pfAvatar" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&h=400&fit=crop&crop=face" class="avatar-img"></div>
+            <div class="profile-info">
+              <h2 id="pfName">Paciente</h2>
+              <div id="pfMeta">Edad: -- · Tel: -- · Estado: --</div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-secondary" onclick="history.back()">← Volver</button>
+          </div>
+        </div>
+
+  <h3 class="ex-section-title">Ejercicios asignados a este paciente</h3>
+        <div id="exercisesContainer" class="ex-list">
+          <!-- tarjetas de ejercicios asignados -->
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="deleteModal" class="modal">
+    <div class="modal-content modal-confirm">
+      <div class="modal-header modal-warning">
+        <h2>⚠️ Confirmar eliminación</h2>
+      </div>
+      <div class="modal-body">
+        <p class="confirm-message">¿Estás seguro de que quieres eliminar este ejercicio?</p>
+        <p class="confirm-warning">Esta acción no se puede deshacer.</p>
+        <div class="confirm-actions">
+          <button class="btn btn-action btn-secondary" onclick="cancelDeleteAssignment()">Cancelar</button>
+          <button class="btn btn-action btn-danger" onclick="confirmDeleteAssignment()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../Dashboard/admin-manager.js"></script>
+  <script src="ver_perfil.js"></script>
+</body>
+</html>

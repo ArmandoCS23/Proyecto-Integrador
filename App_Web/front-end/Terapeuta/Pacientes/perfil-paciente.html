@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil del Paciente</title>
+  <link rel="stylesheet" href="../../Administrador/Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="perfil-paciente.css">
+  <link rel="stylesheet" href="../Historial/Historial.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar"><img id="therapistPhoto" src="../Dashboard/../Administrador/Dashboard/avatar.png" alt="Terapeuta"></div>
+        <h3 id="therapistName">Terapeuta</h3>
+        <p id="therapistEmail" class="muted">correo@ejemplo.com</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboardt.html'">Inicio</li>
+          <li class="active" onclick="window.location.href='pacientes.html'">Pacientes</li>
+          <li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Reportes/Reportes.html'">Reportes</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="window.location.href='../messages.html'">Mensajes</li>
+          <li onclick="logoutTherapist()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      
+      <section class="profile-header">
+        <div class="profile-info">
+          <div class="profile-avatar">
+            <img id="pfAvatar" src="https://via.placeholder.com/96" alt="Paciente">
+          </div>
+          <div class="profile-details">
+            <h2 id="pfName">Paciente</h2>
+            <div id="pfMeta" class="profile-meta"></div>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button id="backBtn" class="btn btn-secondary" onclick="history.back()">Volver</button>
+          <button class="btn btn-primary" id="msgPatientBtn">Mensaje</button>
+        </div>
+      </section>
+
+      <div class="profile-content">
+        <section class="exercises-assigned">
+          <h3>Ejercicios Asignados por el Administrador</h3>
+          <div id="assignedExercisesList" class="exercises-grid">
+            <!-- Rendered dynamically -->
+          </div>
+        </section>
+      </div>
+
+      <!-- Confirmation Modal -->
+      <div class="confirm-modal" id="confirmModal">
+        <div class="confirm-modal-content">
+          <div class="confirm-modal-header">
+            <h3>Confirmar acción</h3>
+            <button class="confirm-close-btn" onclick="closeConfirmModal()">✕</button>
+          </div>
+          <div class="confirm-modal-body">
+            <p id="confirmMessage">¿Estás seguro?</p>
+          </div>
+          <div class="confirm-modal-footer">
+            <button class="btn btn-secondary" onclick="closeConfirmModal()">Cancelar</button>
+            <button class="btn btn-danger" id="confirmActionBtn" onclick="executeConfirmAction()">Confirmar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal para ajustar ejercicio -->
+      <div class="adjust-exercise-modal" id="adjustExerciseModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Ajustar Ejercicio</h3>
+            <button class="close-btn" onclick="closeAdjustExerciseModal()">✕</button>
+          </div>
+          <div class="modal-body">
+            <form id="adjustExerciseForm">
+              <div class="form-group">
+                <label>Nombre del Ejercicio</label>
+                <input type="text" id="adjExName" disabled>
+              </div>
+
+              <div class="form-group">
+                <label>Repeticiones</label>
+                <input type="text" id="adjExReps" placeholder="Ej. 10 repeticiones" required>
+              </div>
+
+              <div class="form-group">
+                <label>Duración / Días</label>
+                <input type="text" id="adjExDuration" placeholder="Ej. 30 segundos / 3 días">
+              </div>
+
+              <div class="form-group">
+                <label>Notas para el paciente</label>
+                <textarea id="adjExNotes" placeholder="Observaciones adicionales" rows="3"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <button type="button" class="btn btn-secondary" onclick="closeAdjustExerciseModal()">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirmation/Alert Modal -->
+      <div class="confirm-modal" id="confirmModal">
+        <div class="confirm-modal-content">
+          <div class="confirm-modal-header">
+            <h3 id="confirmTitle">Confirmación</h3>
+            <button class="close-btn" onclick="closeConfirmModal()">✕</button>
+          </div>
+          <div class="confirm-modal-body">
+            <p id="confirmMessage">¿Estás seguro?</p>
+          </div>
+          <div class="confirm-modal-actions">
+            <button class="btn btn-secondary" onclick="closeConfirmModal()">Cancelar</button>
+            <button class="btn btn-primary" id="confirmBtn" onclick="confirmAction()">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../shared/therapist-manager.js"></script>
+  <script src="../Ejercicios/video-manifest.js"></script>
+  <script src="perfil-paciente.js"></script>
+  <script src="../Historial/Historial.js"></script>
+</body>
+</html>

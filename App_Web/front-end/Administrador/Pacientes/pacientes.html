@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacientes</title>
+  <link rel="stylesheet" href="../Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="pacientes.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Canonical Sidebar (from dashboard-admin.html) -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar">
+          <img id="adminPhoto" src="../Dashboard/avatar.png" alt="Administrador">
+        </div>
+        <h3 id="adminName">Administrador</h3>
+        <p id="adminEmail" class="muted">admin@ejemplo.com</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboard-admin.html'">Inicio</li>
+          <li onclick="window.location.href='../terapeuta/terapeutas.html'">Terapeutas</li>
+          <li onclick="window.location.href='pacientes.html'" class="active">Pacientes</li>
+          <li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Dar de alta paciente/alta-paciente.html'">Dar de alta paciente</li>
+          <li onclick="window.location.href='../Dar de alta terapeuta/alta-terapeuta.html'">Dar de alta terapeuta</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="logoutAdmin()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Pacientes Registrados</h1>
+      
+      <div class="search-section">
+        <div style="display:flex; gap:12px; align-items:center; max-width:900px; margin:0 auto;">
+          <input type="text" id="searchInput" placeholder="Buscar por nombre, doctor, tratamiento o estado..." style="flex:1">
+        </div>
+      </div>
+      
+      <div class="patients-container" id="patientsContainer">
+
+        <!-- Tarjeta de paciente -->
+        <div class="patient-card">
+          <div class="patient-header">
+            <div class="patient-info">
+              <h3>Juan Pérez</h3>
+              <div class="patient-specialty">Fisioterapia de rodilla</div>
+            </div>
+          </div>
+          <div class="patient-details">
+            <p><strong>Doctor asignado:</strong> Laura Martínez</p>
+            <p><strong>Tratamiento:</strong> Fisioterapia de rodilla</p>
+            <p><strong>Duración:</strong> 3 meses</p>
+            <p><strong>Estado:</strong> <span class="patient-status status-active">Activo</span></p>
+          </div>
+        </div>
+
+        <div class="patient-card">
+          <div class="patient-header">
+            <div class="patient-info">
+              <h3>Ana Gómez</h3>
+              <div class="patient-specialty">Rehabilitación espalda baja</div>
+            </div>
+          </div>
+          <div class="patient-details">
+            <p><strong>Doctor asignado:</strong> Carlos Gómez</p>
+            <p><strong>Tratamiento:</strong> Rehabilitación espalda baja</p>
+            <p><strong>Duración:</strong> 6 semanas</p>
+            <p><strong>Estado:</strong> <span class="patient-status status-followup">En seguimiento</span></p>
+          </div>
+        </div>
+
+        <div class="patient-card">
+          <div class="patient-header">
+            <div class="patient-info">
+              <h3>Carlos Rodríguez</h3>
+              <div class="patient-specialty">Terapia manual</div>
+            </div>
+          </div>
+          <div class="patient-details">
+            <p><strong>Doctor asignado:</strong> Ana García</p>
+            <p><strong>Tratamiento:</strong> Terapia manual cervical</p>
+            <p><strong>Duración:</strong> 4 semanas</p>
+            <p><strong>Estado:</strong> <span class="patient-status status-active">Activo</span></p>
+          </div>
+        </div>
+
+        <div class="patient-card">
+          <div class="patient-header">
+            <div class="patient-info">
+              <h3>María López</h3>
+              <div class="patient-specialty">Fisioterapia deportiva</div>
+            </div>
+          </div>
+          <div class="patient-details">
+            <p><strong>Doctor asignado:</strong> Miguel Santos</p>
+            <p><strong>Tratamiento:</strong> Recuperación de lesión deportiva</p>
+            <p><strong>Duración:</strong> 8 semanas</p>
+            <p><strong>Estado:</strong> <span class="patient-status status-inactive">Completado</span></p>
+          </div>
+        </div>
+
+        <div class="patient-card">
+          <div class="patient-header">
+            <div class="patient-info">
+              <h3>Pedro Martín</h3>
+              <div class="patient-specialty">Rehabilitación postquirúrgica</div>
+            </div>
+          </div>
+          <div class="patient-details">
+            <p><strong>Doctor asignado:</strong> Luis Rodríguez</p>
+            <p><strong>Tratamiento:</strong> Rehabilitación post-cirugía</p>
+            <p><strong>Duración:</strong> 12 semanas</p>
+            <p><strong>Estado:</strong> <span class="patient-status status-active">Activo</span></p>
+          </div>
+        </div>
+
+        <div class="patient-card">
+          <div class="patient-header">
+            <div class="patient-info">
+              <h3>Sofía García</h3>
+              <div class="patient-specialty">Fisioterapia respiratoria</div>
+            </div>
+          </div>
+          <div class="patient-details">
+            <p><strong>Doctor asignado:</strong> Carlos Mendoza</p>
+            <p><strong>Tratamiento:</strong> Terapia respiratoria</p>
+            <p><strong>Duración:</strong> 6 semanas</p>
+            <p><strong>Estado:</strong> <span class="patient-status status-followup">En seguimiento</span></p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../Dashboard/admin-manager.js"></script>
+    <script src="admin-pacientes.js"></script>
+</body>
+</html>

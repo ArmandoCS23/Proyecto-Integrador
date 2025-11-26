@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pacientes - Terapeuta</title>
+  <!-- Usar estilos canónicos del Administrador para sidebar y layout -->
+  <link rel="stylesheet" href="../../Administrador/Dashboard/dashboard-admin.css">
+  <link rel="stylesheet" href="../dashboardt.css">
+  <link rel="stylesheet" href="pacientes.css">
+  <link rel="stylesheet" href="../Historial/Historial.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar"><img id="therapistPhoto" src="../Dashboard/../Administrador/Dashboard/avatar.png" alt="Terapeuta"></div>
+        <h3 id="therapistName">Terapeuta</h3>
+        <p id="therapistEmail" class="muted">correo@ejemplo.com</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li onclick="window.location.href='../Dashboard/dashboardt.html'">Inicio</li>
+          <li class="active" onclick="window.location.href='pacientes.html'">Pacientes</li>
+          <li onclick="window.location.href='../Ejercicios/ejercicios.html'">Ejercicios</li>
+          <li onclick="window.location.href='../Reportes/Reportes.html'">Reportes</li>
+          <li onclick="window.location.href='../Historial/historial.html'">Historial</li>
+          <li onclick="window.location.href='../messages.html'">Mensajes</li>
+          <li onclick="logoutTherapist()">Cerrar sesión</li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="patients-header">
+        <div class="header-content">
+          <h1>Pacientes</h1>
+          <p class="muted">Gestiona la lista de pacientes asignados a tu cuenta</p>
+        </div>
+      </header>
+
+      <section class="search-section">
+        <input id="searchInput" placeholder="Buscar paciente por nombre o diagnóstico...">
+      </section>
+
+      <section class="patients-container" id="patientsContainer">
+        <!-- Ejemplos, serán reemplazables por datos reales -->
+        <article class="patient-card">
+          <header class="patient-header">
+            <img class="patient-avatar" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=200&h=200&fit=crop&crop=face" alt="Juan Pérez">
+            <div class="patient-info">
+              <h3>Juan Pérez</h3>
+              <p class="patient-specialty">Fisioterapia rodilla</p>
+            </div>
+          </header>
+          <div class="patient-details">
+            <p><strong>Doctor:</strong> Laura Martínez</p>
+            <p><strong>Estado:</strong> <span class="patient-status status-active">Activo</span></p>
+          </div>
+          <footer class="card-footer">
+            <button class="btn btn-primary" onclick="window.location.href='perfil-paciente.html?name=Juan%20P%C3%A9rez'">Ver perfil</button>
+            <button class="btn btn-secondary" onclick="window.location.href='../messages.html?patient=Juan%20P%C3%A9rez'">Mensajes</button>
+          </footer>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal de Actividades -->
+  <div class="activity-modal" id="activityModal">
+    <div class="activity-modal-content">
+      <div class="activity-modal-header">
+        <h2 id="activityModalTitle">Actividades del Paciente</h2>
+        <button class="close-btn" onclick="closeActivityModal()">✕</button>
+      </div>
+      <div class="activity-modal-body" id="activityModalBody">
+        <!-- Contenido dinámico -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../shared/therapist-manager.js"></script>
+  <script src="pacientes.js"></script>
+  <script src="../Historial/Historial.js"></script>
+</body>
+</html>

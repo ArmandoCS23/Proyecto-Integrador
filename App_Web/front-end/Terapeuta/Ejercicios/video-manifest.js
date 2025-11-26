@@ -1,0 +1,179 @@
+(function(){
+  const manifest = [
+    {
+      "id": "escoliosis-ambas-rodillas-al-pecho",
+      "name": "Ambas rodillas al pecho",
+      "path": "videos/Escoliosis lumbar/Ambas rodillas al pecho.mp4",
+      "notes": "Escoliosis lumbar"
+    },
+    {
+      "id": "escoliosis-cubito-supino",
+      "name": "Cubito supino",
+      "path": "videos/Escoliosis lumbar/Cubito supino.mp4",
+      "notes": "Escoliosis lumbar"
+    },
+    {
+      "id": "escoliosis-perro-de-caza",
+      "name": "Perro de caza",
+      "path": "videos/Escoliosis lumbar/Perro de caza.mp4",
+      "notes": "Escoliosis lumbar"
+    },
+    {
+      "id": "escoliosis-plancha-lateral",
+      "name": "Plancha lateral",
+      "path": "videos/Escoliosis lumbar/Plancha lateral.mp4",
+      "notes": "Escoliosis lumbar"
+    },
+    {
+      "id": "escoliosis-postura-del-avion",
+      "name": "Postura del Avion",
+      "path": "videos/Escoliosis lumbar/Postura del Avion.mp4",
+      "notes": "Escoliosis lumbar"
+    },
+    {
+      "id": "escoliosis-puente",
+      "name": "Puente",
+      "path": "videos/Escoliosis lumbar/Puente.mp4",
+      "notes": "Escoliosis lumbar"
+    },
+    {
+      "id": "escoliosis-rodilla-al-pecho",
+      "name": "Rodilla al pecho",
+      "path": "videos/Escoliosis lumbar/Rodilla al pecho.mp4",
+      "notes": "Escoliosis lumbar"
+    },
+    {
+      "id": "espondilolisis-abdominales",
+      "name": "Abdominales",
+      "path": "videos/Espondilólisis/Abdominales.mp4",
+      "notes": "Espondilólisis"
+    },
+    {
+      "id": "espondilolisis-ambas-rodillas-al-pecho",
+      "name": "Ambas rodillas al pecho",
+      "path": "videos/Espondilólisis/Ambas rodillas al pecho.mp4",
+      "notes": "Espondilólisis"
+    },
+    {
+      "id": "espondilolisis-perro-de-caza",
+      "name": "Perro de caza",
+      "path": "videos/Espondilólisis/Perro de caza.mp4",
+      "notes": "Espondilólisis"
+    },
+    {
+      "id": "espondilolisis-plancha-sobre-codos",
+      "name": "Plancha sobre codos",
+      "path": "videos/Espondilólisis/Plancha sobre codos.mp4",
+      "notes": "Espondilólisis"
+    },
+    {
+      "id": "espondilolisis-puente",
+      "name": "Puente",
+      "path": "videos/Espondilólisis/Puente.mp4",
+      "notes": "Espondilólisis"
+    },
+    {
+      "id": "espondilolisis-rodilla-al-pecho",
+      "name": "Rodilla al pecho",
+      "path": "videos/Espondilólisis/Rodilla al pecho.mp4",
+      "notes": "Espondilólisis"
+    },
+    {
+      "id": "hernia-ambas-rodillas-al-pecho",
+      "name": "Ambas rodillas al pecho",
+      "path": "videos/Hernia de disco lumbar/Ambas rodillas al pecho.mp4",
+      "notes": "Hernia de disco lumbar"
+    },
+    {
+      "id": "hernia-el-perro-y-gato",
+      "name": "El perro y gato",
+      "path": "videos/Hernia de disco lumbar/El perro y gato.mp4",
+      "notes": "Hernia de disco lumbar"
+    },
+    {
+      "id": "hernia-en-cuatro-puntos",
+      "name": "En cuatro puntos",
+      "path": "videos/Hernia de disco lumbar/En cuatro puntos.mp4",
+      "notes": "Hernia de disco lumbar"
+    },
+    {
+      "id": "hernia-piernas-al-abdomen",
+      "name": "Piernas al abdomen",
+      "path": "videos/Hernia de disco lumbar/Piernas al abdomen.mp4",
+      "notes": "Hernia de disco lumbar"
+    },
+    {
+      "id": "hernia-posicion-de-cobra",
+      "name": "Posicion de cobra",
+      "path": "videos/Hernia de disco lumbar/Posicion de cobra.mp4",
+      "notes": "Hernia de disco lumbar"
+    },
+    {
+      "id": "hernia-posicion-de-esfinge",
+      "name": "Posicion de esfinge",
+      "path": "videos/Hernia de disco lumbar/Posicion de esfinge.mp4",
+      "notes": "Hernia de disco lumbar"
+    },
+    {
+      "id": "hernia-rodilla-al-pecho",
+      "name": "Rodilla al pecho",
+      "path": "videos/Hernia de disco lumbar/Rodilla al pecho.mp4",
+      "notes": "Hernia de disco lumbar"
+    },
+    {
+      "id": "lumbalgia-abdominales-pierna-contraria",
+      "name": "Abdominales (pierna contraria)",
+      "path": "videos/Lumbalgia mecánica inespecífica/Abdominales (pierna contraria).mp4",
+      "notes": "Lumbalgia mecánica inespecífica"
+    },
+    {
+      "id": "lumbalgia-abdominales-pierna-del-mismo-lado",
+      "name": "Abdominales (pierna del mismo lado)",
+      "path": "videos/Lumbalgia mecánica inespecífica/Abdominales (pierna del mismo lado).mp4",
+      "notes": "Lumbalgia mecánica inespecífica"
+    },
+    {
+      "id": "lumbalgia-abdominales",
+      "name": "Abdominales",
+      "path": "videos/Lumbalgia mecánica inespecífica/Abdominales.mp4",
+      "notes": "Lumbalgia mecánica inespecífica"
+    },
+    {
+      "id": "lumbalgia-el-perro-y-gato",
+      "name": "El perro y gato",
+      "path": "videos/Lumbalgia mecánica inespecífica/El perro y gato.mp4",
+      "notes": "Lumbalgia mecánica inespecífica"
+    },
+    {
+      "id": "lumbalgia-extension-de-la-columna",
+      "name": "Extension de la columna",
+      "path": "videos/Lumbalgia mecánica inespecífica/Extension de la columna.mp4",
+      "notes": "Lumbalgia mecánica inespecífica"
+    },
+    {
+      "id": "lumbalgia-inclinacion-pelvica-de-pie",
+      "name": "Inclinacion pelvica de pie",
+      "path": "videos/Lumbalgia mecánica inespecífica/Inclinacion pelvica de pie.mp4",
+      "notes": "Lumbalgia mecánica inespecífica"
+    },
+    {
+      "id": "lumbalgia-perro-de-caza",
+      "name": "Perro de caza",
+      "path": "videos/Lumbalgia mecánica inespecífica/Perro de caza.mp4",
+      "notes": "Lumbalgia mecánica inespecífica"
+    },
+    {
+      "id": "lumbalgia-plancha-lateral",
+      "name": "Plancha lateral",
+      "path": "videos/Lumbalgia mecánica inespecífica/Plancha lateral.mp4",
+      "notes": "Lumbalgia mecánica inespecífica"
+    },
+    {
+      "id": "lumbalgia-puente",
+      "name": "Puente",
+      "path": "videos/Lumbalgia mecánica inespecífica/Puente.mp4",
+      "notes": "Lumbalgia mecánica inespecífica"
+    }
+  ];
+  window.__exerciseVideoManifest = window.__exerciseVideoManifest || manifest;
+})();
