@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+env/
+ENV/
+
+# Node
+node_modules/
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# Expo
+.expo/
+web-build/
+expo-env.d.ts
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+entrenar_log.txt
+entrenar_videos_log.txt
+procesar_videos_log.txt
+
+# Modelos y datasets grandes (opcional - comenta si quieres subirlos)
+# modelo/modelo_posturas.pkl
+# modelo/encoder.pkl
+# modelo/pose_landmarker.task
+# modelo/dataset/
+
+# Videos (opcional - pueden ser muy pesados)
+app_movil/assets/videos/
+app_movil/assets/videos_compatible/
+
+# Archivos temporales
+*.tmp
+*.bak
+.cache/
+
+# Environment variables
+.env
+.env.local
+.env*.local
+
+# Build artifacts
+*.apk
+*.ipa
+*.aab
